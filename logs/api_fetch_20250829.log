@@ -97,3 +97,49 @@ Found 1 new unique orders:
 2025-08-29 20:39:01,266 - INFO - fetch_additional_data() completed successfully
 2025-08-29 20:39:01,266 - INFO - Starting fetch_second_api()...
 2025-08-29 20:39:01,266 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-29 20:39:24,895 - INFO - Received 66281 items from API
+2025-08-29 20:39:24,895 - INFO - Filtered out 1 TEST records
+2025-08-29 20:39:26,383 - INFO - Written 66280 items to second.json
+2025-08-29 20:39:26,415 - INFO - fetch_second_api() completed successfully
+2025-08-29 20:39:26,415 - INFO - Starting fetch_shipped_orders()...
+2025-08-29 20:39:50,486 - INFO - Current unique shipped orders in file: 9729
+2025-08-29 20:39:50,508 - INFO - No new unique shipped orders to append
+2025-08-29 20:39:50,508 - INFO - Total unique shipped orders remains: 9729
+2025-08-29 20:39:50,539 - INFO - fetch_shipped_orders() completed successfully
+2025-08-29 20:39:50,539 - INFO - All API calls completed successfully
+2025-08-29 20:39:50,539 - INFO - Processing took 55.65 seconds
+2025-08-29 20:39:50,539 - INFO - Waiting 64.35 seconds until next poll...
+2025-08-29 20:40:54,892 - INFO - ==== POLLING CYCLE STARTED: 20:40:54 ====
+2025-08-29 20:40:54,892 - INFO - Starting fetch_additional_data()...
+2025-08-29 20:41:00,133 - INFO - Current unique orders in file: 5384
+2025-08-29 20:41:00,141 - INFO - No new unique orders to append
+2025-08-29 20:41:00,141 - INFO - Total unique orders remains: 5384
+2025-08-29 20:41:00,151 - INFO - fetch_additional_data() completed successfully
+2025-08-29 20:41:00,151 - INFO - Starting fetch_second_api()...
+2025-08-29 20:41:00,151 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-29 20:41:23,806 - INFO - Received 66281 items from API
+2025-08-29 20:41:23,813 - INFO - Filtered out 1 TEST records
+2025-08-29 20:41:25,191 - INFO - Written 66280 items to second.json
+2025-08-29 20:41:25,222 - INFO - fetch_second_api() completed successfully
+2025-08-29 20:41:25,222 - INFO - Starting fetch_shipped_orders()...
+2025-08-29 20:41:48,866 - INFO - Current unique shipped orders in file: 9729
+2025-08-29 20:41:48,881 - INFO - No new unique shipped orders to append
+2025-08-29 20:41:48,881 - INFO - Total unique shipped orders remains: 9729
+2025-08-29 20:41:48,912 - INFO - fetch_shipped_orders() completed successfully
+2025-08-29 20:41:48,912 - INFO - All API calls completed successfully
+2025-08-29 20:41:48,912 - INFO - Processing took 54.02 seconds
+2025-08-29 20:41:48,912 - INFO - Waiting 65.98 seconds until next poll...
+2025-08-29 20:42:54,893 - INFO - ==== POLLING CYCLE STARTED: 20:42:54 ====
+2025-08-29 20:42:54,893 - INFO - Starting fetch_additional_data()...
+2025-08-29 20:43:01,319 - INFO - Current unique orders in file: 5384
+2025-08-29 20:43:01,322 - INFO - No new unique orders to append
+2025-08-29 20:43:01,322 - INFO - Total unique orders remains: 5384
+2025-08-29 20:43:01,329 - INFO - fetch_additional_data() completed successfully
+2025-08-29 20:43:01,329 - INFO - Starting fetch_second_api()...
+2025-08-29 20:43:01,329 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-29 20:43:24,996 - INFO - Received 66281 items from API
+2025-08-29 20:43:25,003 - INFO - Filtered out 1 TEST records
+2025-08-29 20:43:26,319 - INFO - Written 66280 items to second.json
+2025-08-29 20:43:26,359 - INFO - fetch_second_api() completed successfully
+2025-08-29 20:43:26,359 - INFO - Starting fetch_shipped_orders()...
+2025-08-29 20:43:29,557 - INFO - Received keyboard interrupt, shutting down...
