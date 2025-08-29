@@ -143,3 +143,31 @@ Found 1 new unique orders:
 2025-08-29 20:43:26,359 - INFO - fetch_second_api() completed successfully
 2025-08-29 20:43:26,359 - INFO - Starting fetch_shipped_orders()...
 2025-08-29 20:43:29,557 - INFO - Received keyboard interrupt, shutting down...
+2025-08-29 21:01:09,979 - INFO - ==== SCRIPT STARTED ====
+2025-08-29 21:01:09,979 - INFO - Starting API fetch script - polling every 120 seconds continuously
+2025-08-29 21:01:09,979 - INFO - ==== POLLING CYCLE STARTED: 21:01:09 ====
+2025-08-29 21:01:09,980 - INFO - Cleaning old data from JSON files...
+2025-08-29 21:01:10,379 - INFO - test.json: no old records to remove, 20308 records remain
+2025-08-29 21:01:10,505 - INFO - second.json: no old records to remove, 10148 records remain
+2025-08-29 21:01:10,507 - INFO - Cleanup completed
+2025-08-29 21:01:10,507 - INFO - Starting fetch_additional_data()...
+2025-08-29 21:01:16,390 - INFO - Filtered 635 records down to 634 records within 60 days
+2025-08-29 21:01:16,536 - INFO - Current unique orders in file: 5383
+2025-08-29 21:01:16,536 - INFO - No new unique orders to append
+2025-08-29 21:01:16,536 - INFO - Total unique orders remains: 5383
+2025-08-29 21:01:16,547 - INFO - fetch_additional_data() completed successfully
+2025-08-29 21:01:16,549 - INFO - Starting fetch_second_api()...
+2025-08-29 21:01:16,549 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-29 21:01:40,088 - INFO - Received 66281 items from API
+2025-08-29 21:01:40,088 - INFO - Filtered out 1 TEST records
+2025-08-29 21:01:40,720 - INFO - After 60-day filtering: 10148 items remain from 66280 total items
+2025-08-29 21:01:40,955 - INFO - Written 10148 items to second.json
+2025-08-29 21:01:40,993 - INFO - fetch_second_api() completed successfully
+2025-08-29 21:01:40,993 - INFO - Starting fetch_shipped_orders()...
+2025-08-29 21:02:05,081 - INFO - Current unique shipped orders in file: 9729
+2025-08-29 21:02:05,101 - INFO - No new unique shipped orders to append
+2025-08-29 21:02:05,103 - INFO - Total unique shipped orders remains: 9729
+2025-08-29 21:02:05,147 - INFO - fetch_shipped_orders() completed successfully
+2025-08-29 21:02:05,147 - INFO - All API calls completed successfully
+2025-08-29 21:02:05,147 - INFO - Processing took 55.17 seconds
+2025-08-29 21:02:05,147 - INFO - Waiting 64.83 seconds until next poll...
