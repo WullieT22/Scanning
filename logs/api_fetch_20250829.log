@@ -1,0 +1,4 @@
+2025-08-29 20:30:54,884 - INFO - ==== SCRIPT STARTED ====
+2025-08-29 20:30:54,885 - INFO - Starting API fetch script - polling every 120 seconds continuously
+2025-08-29 20:30:54,885 - INFO - ==== POLLING CYCLE STARTED: 20:30:54 ====
+2025-08-29 20:30:54,885 - INFO - Starting fetch_additional_data()...

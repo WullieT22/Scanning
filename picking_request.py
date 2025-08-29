@@ -17,6 +17,42 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # Authentication
 auth_wests = HTTPBasicAuth("WESTS", "Westfield")
 
+def is_within_60_days(date_string):
+    """Check if a date is within the last 60 days from today"""
+    if not date_string or date_string == "N/A":
+        return False
+    
+    try:
+        # Handle different date formats
+        date_formats = [
+            "%Y-%m-%d %H:%M:%S",  # Format from second.json: "2024-07-10 13:33:40"
+            "%Y-%m-%dT%H:%M:%S",  # Format from test.json: "2025-02-26T00:00:00"
+            "%Y-%m-%dT%H:%M:%SZ", # Format with Z suffix: "2025-01-30T11:24:12Z"
+            "%Y-%m-%d",           # Just date: "2024-07-10"
+        ]
+        
+        parsed_date = None
+        for date_format in date_formats:
+            try:
+                parsed_date = datetime.strptime(date_string, date_format)
+                break
+            except ValueError:
+                continue
+        
+        if parsed_date is None:
+            logging.warning(f"Could not parse date: {date_string}")
+            return False
+        
+        # Calculate the date 60 days ago
+        sixty_days_ago = datetime.now() - timedelta(days=60)
+        
+        # Return True if the date is within the last 60 days
+        return parsed_date >= sixty_days_ago
+        
+    except Exception as e:
+        logging.error(f"Error parsing date {date_string}: {str(e)}")
+        return False
+
 def setup_logging():
     """Configure logging for the application"""
     if not os.path.exists("logs"):
@@ -57,6 +93,20 @@ def fetch_additional_data():
         response = make_api_request(url, username, password)
         response.raise_for_status()
         new_data = response.json()
+
+        # Filter data to only include records within 60 days
+        filtered_value = []
+        original_count = len(new_data.get("value", []))
+        
+        for item in new_data.get("value", []):
+            need_by_date = item.get("MtlQueue_NeedByDate")
+            if is_within_60_days(need_by_date):
+                filtered_value.append(item)
+        
+        logging.info(f"Filtered {original_count} records down to {len(filtered_value)} records within 60 days")
+        
+        # Update the data structure with filtered items
+        new_data["value"] = filtered_value
 
         # Handle test.json with duplicate checking
         try:
@@ -131,21 +181,29 @@ def fetch_second_api():
             logging.info(f"Filtered out {len(new_data_list) - len(filtered_new_data)} TEST records")
         
         # Transform data to match existing structure WITH new LotNum field
+        transformed_data = []
+        for item in filtered_new_data:
+            transformed_item = {
+                "Calculated_Test": item.get("Order", "N/A"),
+                "Calculated_Warehouse": item.get("Location", "N/A"),
+                # Keep the original product value in MtlQueue_PartNum
+                "MtlQueue_PartNum": item.get("Product", "N/A"),
+                # Add a new field for the extracted 8 digits
+                "LotNum": extract_first_eight_from_last_sixteen(item.get("Product", "N/A")),
+                "Calculated_Quantity": item.get("ExpectedQuantity", "N/A"),
+                "ShipTo_Name": item.get("ShipAddress", "N/A"),
+                "MtlQueue_NeedByDate": item.get("TimeStamp", "N/A")
+            }
+            
+            # Filter based on 60-day rule
+            need_by_date = transformed_item.get("MtlQueue_NeedByDate")
+            if is_within_60_days(need_by_date):
+                transformed_data.append(transformed_item)
+        
+        logging.info(f"After 60-day filtering: {len(transformed_data)} items remain from {len(filtered_new_data)} total items")
+        
         filtered_data = {
-            "value": [
-                {
-                    "Calculated_Test": item.get("Order", "N/A"),
-                    "Calculated_Warehouse": item.get("Location", "N/A"),
-                    # Keep the original product value in MtlQueue_PartNum
-                    "MtlQueue_PartNum": item.get("Product", "N/A"),
-                    # Add a new field for the extracted 8 digits
-                    "LotNum": extract_first_eight_from_last_sixteen(item.get("Product", "N/A")),
-                    "Calculated_Quantity": item.get("ExpectedQuantity", "N/A"),
-                    "ShipTo_Name": item.get("ShipAddress", "N/A"),
-                    "MtlQueue_NeedByDate": item.get("TimeStamp", "N/A")
-                }
-                for item in filtered_new_data  # Using filtered list here
-            ],
+            "value": transformed_data,
             "odata.metadata": ""
         }
 
@@ -261,6 +319,41 @@ def is_business_hours():
     # current_hour = datetime.now().hour
     # return 6 <= current_hour < 20
 
+def clean_old_data_from_json_files():
+    """Remove data older than 60 days from existing JSON files"""
+    files_to_clean = ["test.json", "second.json"]
+    
+    for filename in files_to_clean:
+        try:
+            if not os.path.exists(filename):
+                logging.info(f"{filename} does not exist, skipping cleanup")
+                continue
+                
+            with open(filename, "r") as infile:
+                data = json.load(infile)
+            
+            original_count = len(data.get("value", []))
+            
+            # Filter to keep only data within 60 days
+            filtered_value = []
+            for item in data.get("value", []):
+                need_by_date = item.get("MtlQueue_NeedByDate")
+                if is_within_60_days(need_by_date):
+                    filtered_value.append(item)
+            
+            data["value"] = filtered_value
+            new_count = len(filtered_value)
+            
+            if original_count != new_count:
+                with open(filename, "w") as outfile:
+                    json.dump(data, outfile, indent=4, sort_keys=True)
+                logging.info(f"Cleaned {filename}: removed {original_count - new_count} old records, {new_count} records remain")
+            else:
+                logging.info(f"{filename}: no old records to remove, {new_count} records remain")
+                
+        except Exception as e:
+            logging.error(f"Error cleaning {filename}: {str(e)}")
+
 def ensure_json_file_exists(filename):
     """Ensure a JSON file exists with at least an empty structure"""
     try:
@@ -291,6 +384,14 @@ def main():
             
             try:
                 start_time = datetime.now()
+                
+                # Clean old data from JSON files at the start of each cycle
+                try:
+                    logging.info("Cleaning old data from JSON files...")
+                    clean_old_data_from_json_files()
+                    logging.info("Cleanup completed")
+                except Exception as e:
+                    logging.error(f"Error during cleanup: {str(e)}")
                 
                 # Try each API separately so one failure doesn't stop others
                 try:
