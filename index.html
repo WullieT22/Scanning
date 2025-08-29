@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picking List Data</title>
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        /* Layout components */
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            flex-wrap: nowrap;
+        }
+        
+        .title-refresh {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .comparison-header {
+            display: flex;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        
+        .comparison-header-cell {
+            flex: 1;
+            padding: 0 10px;
+        }
+        
+        .comparison-container {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .data-container {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        /* Accordion styling */
+        .accordion {
+            margin-bottom: 10px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .accordion-header,
+        .accordion-placeholder {
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            border-radius: 4px 4px 0 0;
+            width: 450px;
+            height: 45px;
+            margin-bottom: 0;
+            box-sizing: border-box;
+            color: white;
+        }
+        
+        .accordion-header {
+            justify-content: space-between;
+            cursor: pointer;
+            background-color: #0056b3;
+        }
+        
+        .accordion-placeholder {
+            justify-content: center;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 0px;
+            cursor: pointer;
+            background-color: #ff5e00;
+        }
+        
+        .accordion-content {
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            width: 490px;
+            overflow-x: auto;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .accordion-content.show {
+            max-height: 1000px;
+        }
+        
+        .accordion-placeholder + .accordion-content {
+            border-top: none;
+            height: 0 !important;
+            max-height: 0;
+            margin-bottom: 0;
+            padding: 0;
+            border: none;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .accordion-placeholder + .accordion-content.show {
+            max-height: 1000px;
+            padding: 15px;
+        }
+        
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+        
+        th, td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        /* Shipped column specific styling */
+        #data-container-shipped .accordion-content {
+            width: 550px !important;
+        }
+        
+        #data-container-shipped table {
+            width: 100%;
+            table-layout: fixed;
+        }
+        
+        #data-container-shipped table th,
+        #data-container-shipped table td {
+            padding: 2px 4px;
+            font-size: 0.75em; /* Make consistent with above */
+        }
+        
+        /* Shipped column widths */
+        #data-container-shipped table th:nth-child(1),
+        #data-container-shipped table td:nth-child(1) {
+            width: 35% !important;
+            max-width: 180px !important;
+        }
+        
+        #data-container-shipped table th:nth-child(2),
+        #data-container-shipped table td:nth-child(2) {
+            width: 10% !important;
+            text-align: center;
+        }
+        
+        #data-container-shipped table th:nth-child(3),
+        #data-container-shipped table td:nth-child(3),
+        #data-container-shipped table th:nth-child(4),
+        #data-container-shipped table td:nth-child(4) {
+            width: 27.5% !important;
+            text-align: center;
+            white-space: nowrap;
+        }
+        
+        /* Badge & header components */
+        .count-badge {
+            background-color: #28a745;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-weight: bold;
+            min-width: 60px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            margin-left: 10px;
+        }
+        
+        .count-badge.mismatch {
+            background-color: #dc3545;
+            animation: pulse-red 1.5s infinite;
+        }
+        
+        .unique-number-container {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 250px;
+        }
+        
+        .timestamp-display {
+            color: #f68307;
+            font-size: 0.85em;
+            font-weight: bolder;
+            flex: 1;
+            text-align: center;
+            margin: 0 10px;
+        }
+        
+        /* Search & controls */
+        .search-container {
+            margin-bottom: 20px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        #search-input {
+            padding: 10px;
+            width: 60%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        #search-button, #clear-button {
+            padding: 10px 15px;
+            margin-left: 10px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .refresh-button-large {
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 20mm;
+        }
+        
+        #clear-button, #clear-date-filter {
+            background-color: #6c757d;
+        }
+        
+        /* Filter options */
+        .filter-options {
+            margin-top: 10px;
+        }
+        
+        .filter-options label {
+            margin-right: 15px;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .date-range {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .date-range input[type="date"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-right: 15px;
+        }
+        
+        #apply-date-filter, #clear-date-filter {
+            padding: 8px 15px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        
+        /* Animation & status effects */
+        .updated {
+            animation: highlight 2s ease-in-out;
+        }
+        
+        .new-item {
+            animation: highlight-new 2s ease-in-out;
+        }
+        
+        @keyframes highlight {
+            0% { background-color: #ffff99; }
+            100% { background-color: transparent; }
+        }
+        
+        @keyframes highlight-new {
+            0% { background-color: #90ee90; }
+            100% { background-color: transparent; }
+        }
+        
+        @keyframes pulse-red {
+            0% { background-color: #dc3545; }
+            50% { background-color: #bd2130; }
+            100% { background-color: #dc3545; }
+        }
+        
+        /* Info displays */
+        .header-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            color: #666;
+            flex-shrink: 0;
+        }
+        
+        .totals-display {
+            margin-bottom: 5px;
+            font-size: 0.9em;
+            font-weight: bold;
+            color: #0056b3;
+            text-align: right;
+            min-width: 300px;
+        }
+        
+        .totals-display div {
+            margin-bottom: 3px;
+            white-space: nowrap;
+        }
+        
+        .refresh-info {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* Make font size smaller for all tables in dropdowns */
+        .data-container table th,
+        .data-container table td {
+            font-size: 0.75em; /* Reduced from 0.85em */
+            padding: 4px 8px;
+        }
+
+        /* Consistent styling for shipped column */
+        #data-container-shipped table th,
+        #data-container-shipped table td {
+            font-size: 0.75em; /* Match the smaller size */
+            padding: 4px 8px;
+        }
+
+        /* Override any conflicting shipped column styling */
+        #data-container-shipped table th,
+        #data-container-shipped table td {
+            padding: 2px 4px;
+            font-size: 0.75em; /* Make consistent with above */
+        }
+
+        /* Add this to your CSS styles */
+        .shipto-badge {
+            background-color: white;
+            color: black;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: bold;
+            min-width: 40px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <div class="title-refresh">
+            <h1>Picking List Data</h1>
+            <button id="refresh-button" class="refresh-button-large">Refresh Data</button>
+        </div>
+        <div class="header-info">
+            <div class="totals-display">
+                <div>Total Picking Lines: <span id="total1-unique">0</span> orders / <span id="total1-items">0</span> items</div>
+                <div>Scanned Picking Lines: <span id="total2-unique">0</span> orders / <span id="total2-items">0</span> items</div>
+                <div>Shipped On: <span id="total-shipped-unique">0</span> orders / <span id="total-shipped-items">0</span> items / <span id="total-shipped-matched">0</span> scanned</div>
+            </div>
+            <div class="refresh-info">
+                Last updated: <span id="last-updated">Loading...</span>
+                <div id="update-status" style="font-weight: bold; margin-top: 5px;"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Search bar -->
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search">
+        <button id="search-button">Search</button>
+        <button id="clear-button">Clear</button>
+        
+        <!-- Add date range inputs -->
+        <div class="date-range">
+            <label for="date-from">Date From:</label>
+            <input type="date" id="date-from">
+            <label for="date-to">Date To:</label>
+            <input type="date" id="date-to">
+            <button id="apply-date-filter">Apply Date Filter</button>
+            <button id="clear-date-filter">Clear Dates</button>
+        </div>
+        
+        <div class="filter-options">
+            <label><input type="checkbox" id="filter-test-id" checked> Picking Number</label>
+            <label><input type="checkbox" id="filter-part-num" checked> Part</label>
+            <label><input type="checkbox" id="filter-ship-to" checked> Ship To</label>
+            <label><input type="checkbox" id="filter-warehouse" checked> Warehouse</label>
+        </div>
+
+    </div>
+
+    <!-- Update comparison-header section -->
+    <div class="comparison-header">
+        <div class="comparison-header-cell">
+            <h2>Total Picking Lines</h2>
+        </div>
+        <div class="comparison-header-cell">
+            <h2>Scanned Picking Lines</h2>
+        </div>
+        <div class="comparison-header-cell">
+            <h2>Shipped On</h2>
+        </div>
+    </div>
+    <div class="comparison-container">
+        <div id="data-container-primary" class="data-container"></div>
+        <div id="data-container-secondary" class="data-container"></div>
+        <div id="data-container-shipped" class="data-container"></div>
+    </div>
+
+    <script>
+        // Data structures
+        let lastUpdated = new Date();
+        let historicalData1 = [], historicalData2 = [], historicalDataShipped = [];
+        let allData1 = [], allData2 = [], allDataShipped = [];
+        let filteredData1 = [], filteredData2 = [], filteredDataShipped = [];
+        let previousData1 = {}, previousData2 = {}, previousDataShipped = {};
+        let expandedAccordions1 = new Set(), expandedAccordions2 = new Set(), expandedAccordionsShipped = new Set();
+
+        // Core data processing functions
+        async function fetchData() {
+            try {
+                // Set the timestamp at the beginning of the refresh operation
+                lastUpdated = new Date();
+                document.getElementById('last-updated').textContent = lastUpdated.toLocaleTimeString();
+                
+                // Show checking message
+                document.getElementById('update-status').textContent = "Checking for updates...";
+                document.getElementById('update-status').style.color = "#6c757d";
+                
+                // Fetch all three files in parallel
+                const [response1, response2, responseShipped] = await Promise.all([
+                    fetch('test.json'),
+                    fetch('second.json'),
+                    fetch('shipped.json')
+                ]);
+                
+                if (!response1.ok) throw new Error(`HTTP error for test.json! Status: ${response1.status}`);
+                if (!response2.ok) throw new Error(`HTTP error for second.json! Status: ${response2.status}`);
+                
+                // Handle the shipped.json response - allow it to fail gracefully
+                let dataShipped = { value: [] };
+                if (responseShipped.ok) {
+                    dataShipped = await responseShipped.json();
+                } else {
+                    console.warn(`HTTP error for shipped.json! Status: ${responseShipped.status}`);
+                }
+                
+                const data1 = await response1.json();
+                const data2 = await response2.json();
+                
+                // Save expanded state before updating
+                saveExpandedState();
+                
+                // Store the previous data for comparison
+                previousData1 = groupDataByTestId(filteredData1);
+                previousData2 = groupDataByTestId(filteredData2);
+                previousDataShipped = groupDataByOrderNum(filteredDataShipped);
+                
+                // Create a mapping from first 16 digits of GS1 codes to part numbers from test.json
+                const gs1ToPartNumMap = {};
+                data1.value.forEach(item => {
+                    if (item.Calculated_GS1 && item.MtlQueue_PartNum) {
+                        // Extract first 16 digits of GS1 code (removing any spaces)
+                        const gs1First16 = (item.Calculated_GS1.replace(/\s+/g, '')).substring(0, 16);
+                        if (gs1First16.length > 0) {
+                            gs1ToPartNumMap[gs1First16] = item.MtlQueue_PartNum;
+                        }
+                    }
+                });
+                
+                // Process second.json data to replace matching part numbers
+                data2.value.forEach(item => {
+                    if (item.MtlQueue_PartNum) {
+                        // Check if first 16 chars of part number match a GS1 code
+                        const partNumFirst16 = item.MtlQueue_PartNum.replace(/\s+/g, '').substring(0, 16);
+                        if (partNumFirst16 && gs1ToPartNumMap[partNumFirst16]) {
+                            console.log(`Replacing part number ${item.MtlQueue_PartNum} with ${gs1ToPartNumMap[partNumFirst16]}`);
+                            item.MtlQueue_PartNum = gs1ToPartNumMap[partNumFirst16];
+                        }
+                    }
+                });
+                
+                // Merge new data with historical data instead of replacing
+                const newDataAdded1 = mergeWithHistoricalData(data1.value, historicalData1);
+                const newDataAdded2 = mergeWithHistoricalData(data2.value, historicalData2);
+                const newDataAddedShipped = mergeWithHistoricalDataShipped(dataShipped.value, historicalDataShipped);
+                
+                // Show update status
+                if (newDataAdded1 || newDataAdded2 || newDataAddedShipped) {
+                    document.getElementById('update-status').textContent = "Data Added";
+                    document.getElementById('update-status').style.color = "#28a745"; // Green
+                } else {
+                    document.getElementById('update-status').textContent = "No Data Added";
+                    document.getElementById('update-status').style.color = "#6c757d"; // Gray
+                }
+                
+                // Update allData and filteredData based on the merged historical data
+                allData1 = [...historicalData1];
+                allData2 = [...historicalData2];
+                allDataShipped = [...historicalDataShipped];
+                updateFilteredData();
+                
+                processAndDisplayData();
+                updateTotals();
+                restoreExpandedState();
+
+                // Clear the status message after processing
+                document.getElementById('update-status').textContent = "";
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                // Still update the timestamp even if there's an error
+                lastUpdated = new Date();
+                document.getElementById('last-updated').textContent = `${lastUpdated.toLocaleTimeString()} (Error occurred)`;
+                
+                document.getElementById('data-container-primary').innerHTML = `<p>Error loading data: ${error.message}</p>`;
+                document.getElementById('data-container-secondary').innerHTML = `<p>Error loading data: ${error.message}</p>`;
+                document.getElementById('data-container-shipped').innerHTML = `<p>Error loading data: ${error.message}</p>`;
+                
+                // Update status on error as well
+                document.getElementById('update-status').textContent = "Update Failed";
+                document.getElementById('update-status').style.color = "#dc3545"; // Red
+            }
+        }
+
+        function mergeWithHistoricalData(newItems, targetHistoricalData) {
+            // Keep track of which items are new vs. updated
+            const newItemIds = new Set();
+            const updatedItemIds = new Set();
+            
+            // Add new items and update existing ones
+            newItems.forEach(newItem => {
+                // Generate a consistent identifier using Calculated_Test if RowIdent is missing
+                let itemId;
+                if (newItem.RowIdent) {
+                    itemId = newItem.RowIdent;
+                } else if (newItem.Calculated_Test) {
+                    // Create a synthetic ID based on order, part, and warehouse
+                    const warehouse = newItem.Calculated_Warehouse || 'unknown-wh';
+                    itemId = `order-${newItem.Calculated_Test}-part-${newItem.MtlQueue_PartNum || 'unknown'}-wh-${warehouse}`;
+                    // Add this synthetic ID to the item
+                    newItem.RowIdent = itemId;
+                } else {
+                    console.warn('Item without RowIdent or Calculated_Test found:', newItem);
+                    return;
+                }
+                
+                const existingItemIndex = targetHistoricalData.findIndex(item => 
+                    item.RowIdent === itemId);
+                
+                if (existingItemIndex >= 0) {
+                    // Check if item has changed (excluding timestamp and flags)
+                    const existingItem = targetHistoricalData[existingItemIndex];
+                    
+                    // Clone items for comparison without the properties we want to ignore
+                    const existingItemForComparison = {...existingItem};
+                    const newItemForComparison = {...newItem};
+                    
+                    // Remove properties that shouldn't trigger an "updated" state
+                    delete existingItemForComparison.lastSeen;
+                    delete existingItemForComparison.isNew;
+                    delete existingItemForComparison.isUpdated;
+                    
+                    if (JSON.stringify(existingItemForComparison) !== JSON.stringify(newItemForComparison)) {
+                        // Update existing item and mark it as updated
+                        targetHistoricalData[existingItemIndex] = {
+                            ...newItem, 
+                            isUpdated: true,
+                            lastSeen: new Date(),
+                            isNew: existingItem.isNew // Preserve isNew flag
+                        };
+                        updatedItemIds.add(itemId);
+                    } else {
+                        // Just update the lastSeen timestamp without marking as updated
+                        targetHistoricalData[existingItemIndex].lastSeen = new Date();
+                    }
+                } else {
+                    // Add new item and mark it as new
+                    newItem.isNew = true;
+                    newItem.lastSeen = new Date();
+                    targetHistoricalData.push(newItem);
+                    newItemIds.add(itemId);
+                }
+            });
+            
+            // Clear the isNew and isUpdated flags as before
+            targetHistoricalData.forEach(item => {
+                const itemId = item.RowIdent;
+                if (item.isNew && !newItemIds.has(itemId)) {
+                    item.isNew = false;
+                }
+                if (item.isUpdated && !updatedItemIds.has(itemId)) {
+                    item.isUpdated = false;
+                }
+            });
+            
+            console.log(`Data merged: ${newItemIds.size} new items, ${updatedItemIds.size} updated items`);
+            
+            // Return true if any items were added or updated
+            return (newItemIds.size > 0 || updatedItemIds.size > 0);
+        }
+        
+        // Function to merge shipped data
+        function mergeWithHistoricalDataShipped(newItems, targetHistoricalData) {
+            const newItemIds = new Set();
+            const updatedItemIds = new Set();
+            
+            newItems.forEach(newItem => {
+                let itemId;
+                if (newItem.RowIdent) {
+                    itemId = newItem.RowIdent;
+                } else if (newItem.ShipDtl_OrderNum) {
+                    itemId = `shipped-${newItem.ShipDtl_OrderNum}-${newItem.ShipDtl_PartNum || ''}`;
+                    newItem.RowIdent = itemId;
+                } else {
+                    console.warn('Shipped item without identifier found:', newItem);
+                    return;
+                }
+                
+                const existingItemIndex = targetHistoricalData.findIndex(item => 
+                    item.RowIdent === itemId);
+                
+                if (existingItemIndex >= 0) {
+                    // Check if item has changed (excluding timestamp and flags)
+                    const existingItem = targetHistoricalData[existingItemIndex];
+                    
+                    // Clone items for comparison without the properties we want to ignore
+                    const existingItemForComparison = {...existingItem};
+                    const newItemForComparison = {...newItem};
+                    
+                    // Remove properties that shouldn't trigger an "updated" state
+                    delete existingItemForComparison.lastSeen;
+                    delete existingItemForComparison.isNew;
+                    delete existingItemForComparison.isUpdated;
+                    delete existingItemForComparison.RowIdent;  // RowIdent is added by us
+                    
+                    if (JSON.stringify(existingItemForComparison) !== JSON.stringify(newItemForComparison)) {
+                        targetHistoricalData[existingItemIndex] = {...newItem, isUpdated: true, lastSeen: new Date()};
+                        updatedItemIds.add(itemId);
+                    } else {
+                        targetHistoricalData[existingItemIndex].lastSeen = new Date();
+                    }
+                } else {
+                    newItem.isNew = true;
+                    newItem.lastSeen = new Date();
+                    targetHistoricalData.push(newItem);
+                    newItemIds.add(itemId);
+                }
+            });
+            
+            targetHistoricalData.forEach(item => {
+                const itemId = item.RowIdent;
+                if (item.isNew && !newItemIds.has(itemId)) {
+                    item.isNew = false;
+                }
+                if (item.isUpdated && !updatedItemIds.has(itemId)) {
+                    item.isUpdated = false;
+                }
+            });
+            
+            console.log(`Shipped data merged: ${newItemIds.size} new items, ${updatedItemIds.size} updated items`);
+            
+            // Return true if any items were added or updated
+            return (newItemIds.size > 0 || updatedItemIds.size > 0);
+        }
+
+        // Update the countMatches function with debugging and more reliable matching
+        function countMatches(orderNum, shippedItems, secondData) {
+            let matches = 0;
+            
+            // Get all scanned items (from second.json)
+            for (const item of secondData) {
+                // Skip items without MtlQueue_PartNum
+                if (!item.MtlQueue_PartNum) continue;
+                
+                // Check if this item's order number matches
+                const orderPrefix = item.Calculated_Test ? item.Calculated_Test.substring(0, 5) : '';
+                if (orderPrefix !== String(orderNum).substring(0, 5)) continue;
+                
+                // Get LotNum value - either from direct property or by extraction
+                let lotNum = item.LotNum;
+                
+                // Extract from MtlQueue_PartNum if LotNum isn't available and the part number is long enough
+                if (!lotNum && item.MtlQueue_PartNum.length >= 16) {
+                    try {
+                        const last16 = item.MtlQueue_PartNum.slice(-16);
+                        lotNum = last16.substring(0, 8);
+                    } catch (error) {
+                        console.warn(`Could not extract lot number from part ${item.MtlQueue_PartNum}: ${error.message}`);
+                        continue; // Skip this item if we can't extract a lot number
+                    }
+                } else if (!lotNum) {
+                    // Part number is too short to extract lot number
+                    continue; // Skip this item without generating an error
+                }
+                
+                // Skip if we couldn't determine the lot number
+                if (!lotNum) continue;
+                
+                // Check for matching ShipDtl_LotNum in shipped items
+                for (const shippedItem of shippedItems) {
+                    if (shippedItem.ShipDtl_LotNum === lotNum) {
+                        matches++;
+                        break;
+                    }
+                }
+            }
+            
+            return matches;
+        }
+
+        // Data grouping and filtering
+        function updateFilteredData(searchType) {
+            // Start with all data
+            filteredData1 = [...allData1];
+            filteredData2 = [...allData2];
+            filteredDataShipped = [...allDataShipped];
+            
+            // Apply text search if there's something in the search box
+            const searchTerm = document.getElementById('search-input').value.trim().toLowerCase();
+            if (searchTerm !== '') {
+                const searchTestId = document.getElementById('filter-test-id').checked;
+                const searchPartNum = document.getElementById('filter-part-num').checked;
+                const searchShipTo = document.getElementById('filter-ship-to').checked;
+                const searchWarehouse = document.getElementById('filter-warehouse').checked;
+                
+                // Start with an empty set of matching order numbers
+                const matchingOrderNumbers = new Set();
+                
+                // FIRST: Search the shipped data and collect matching order numbers
+                // This ensures the shipped column is searched first
+                filteredDataShipped = filteredDataShipped.filter(item => {
+                    // Expanded search for shipped data
+                    const normalSearch = (searchPartNum && item.ShipDtl_PartNum && 
+                                        item.ShipDtl_PartNum.toLowerCase().includes(searchTerm)) ||
+                                       (item.ShipDtl_OrderNum && 
+                                        item.ShipDtl_OrderNum.toString().toLowerCase().includes(searchTerm)) ||
+                                       (item.ShipDtl_OrderLine && 
+                                        item.ShipDtl_OrderLine.toString().toLowerCase().includes(searchTerm));
+                    
+                    // If this item matches, add its order number to the matching set
+                    if (normalSearch && item.ShipDtl_OrderNum) {
+                        matchingOrderNumbers.add(item.ShipDtl_OrderNum.toString());
+                        matchingOrderNumbers.add(parseInt(item.ShipDtl_OrderNum));
+                    }
+                    
+                    return normalSearch;
+                });
+                
+                // SECOND: Find all matching order numbers from ShipToNum
+                allData1.forEach(item => {
+                    if (item.OrderHed_ShipToNum && 
+                        item.OrderHed_ShipToNum.toLowerCase().includes(searchTerm) && 
+                        item.Calculated_Test) {
+                        matchingOrderNumbers.add(item.Calculated_Test);
+                        
+                        // Also add numeric part for matching with shipped orders
+                        const numericPart = item.Calculated_Test.split('-')[0];
+                        if (numericPart && !isNaN(numericPart)) {
+                            matchingOrderNumbers.add(parseInt(numericPart));
+                            matchingOrderNumbers.add(numericPart);
+                        }
+                    }
+                });
+                
+                // Filter first dataset (test.json)
+                filteredData1 = filteredData1.filter(item => {
+                    const normalSearch = (searchTestId && item.Calculated_Test && 
+                                       item.Calculated_Test.toLowerCase().includes(searchTerm)) ||
+                                       (searchPartNum && item.MtlQueue_PartNum && 
+                                       item.MtlQueue_PartNum.toLowerCase().includes(searchTerm)) ||
+                                       (searchShipTo && item.ShipTo_Name && 
+                                       item.ShipTo_Name.toLowerCase().includes(searchTerm)) ||
+                                       (searchWarehouse && item.Calculated_Warehouse && 
+                                       item.Calculated_Warehouse.toLowerCase().includes(searchTerm)) ||
+                                       (item.OrderHed_ShipToNum && 
+                                       item.OrderHed_ShipToNum.toLowerCase().includes(searchTerm));
+                    
+                    // If this item matches, add its test ID to matching numbers
+                    if (normalSearch && item.Calculated_Test) {
+                        matchingOrderNumbers.add(item.Calculated_Test);
+                        const numericPart = item.Calculated_Test.split('-')[0];
+                        if (numericPart && !isNaN(numericPart)) {
+                            matchingOrderNumbers.add(parseInt(numericPart));
+                            matchingOrderNumbers.add(numericPart);
+                        }
+                    }
+                    
+                    // Also include items that match a shipped order number
+                    if (item.Calculated_Test) {
+                        const numericPart = item.Calculated_Test.split('-')[0];
+                        if (numericPart && matchingOrderNumbers.has(parseInt(numericPart))) {
+                            return true;
+                        }
+                    }
+                    
+                    return normalSearch;
+                });
+                
+                // Filter second dataset (second.json) with matching orders
+                filteredData2 = filteredData2.filter(item => {
+                    const normalSearch = (searchTestId && item.Calculated_Test && item.Calculated_Test.toLowerCase().includes(searchTerm)) ||
+                           (searchPartNum && item.MtlQueue_PartNum && item.MtlQueue_PartNum.toLowerCase().includes(searchTerm)) ||
+                           (searchShipTo && item.ShipTo_Name && item.ShipTo_Name.toLowerCase().includes(searchTerm)) ||
+                           (searchWarehouse && item.Calculated_Warehouse && item.Calculated_Warehouse.toLowerCase().includes(searchTerm)) ||
+                           (item.OrderHed_ShipToNum && item.OrderHed_ShipToNum.toLowerCase().includes(searchTerm));
+                    
+                    // Include matching order numbers
+                    const matchesOrderNumber = item.Calculated_Test && matchingOrderNumbers.has(item.Calculated_Test);
+                    
+                    return normalSearch || matchesOrderNumber;
+                });
+                
+                // Filter shipped dataset with matching orders
+                filteredDataShipped = filteredDataShipped.filter(item => {
+                    const normalSearch = (searchPartNum && item.ShipDtl_PartNum && 
+                                         item.ShipDtl_PartNum.toLowerCase().includes(searchTerm));
+                    
+                    // Include matching order numbers
+                    const matchesOrderNumber = item.ShipDtl_OrderNum && 
+                                             matchingOrderNumbers.has(parseInt(item.ShipDtl_OrderNum));
+                    
+                    return normalSearch || matchesOrderNumber;
+                });
+            }
+            
+            // Apply date range filter if dates are specified
+            const dateFrom = document.getElementById('date-from').value;
+            const dateTo = document.getElementById('date-to').value;
+            
+            if (dateFrom || dateTo) {
+                console.log(`Filtering by ship date: ${dateFrom} to ${dateTo}`);
+                
+                // Create proper date objects with time set to start/end of day
+                const fromDate = dateFrom ? new Date(dateFrom) : new Date(0);
+                const toDate = dateTo ? new Date(dateTo) : new Date(8640000000000000);
+                
+                // Set fromDate to start of day (midnight)
+                fromDate.setHours(0, 0, 0, 0);
+                
+                // Set toDate to end of day
+                toDate.setHours(23, 59, 59, 999);
+                
+                console.log(`Date range: ${fromDate.toISOString()} to ${toDate.toISOString()}`);
+                
+                // FIRST: Filter shipped data based on Calculated_ActualShipDate 
+                const beforeCount = filteredDataShipped.length;
+                filteredDataShipped = filteredDataShipped.filter(item => {
+                    if (!item.Calculated_ActualShipDate) return false;
+                    
+                    // Parse the date and remove time zone effects by using date parts
+                    const shipDate = new Date(item.Calculated_ActualShipDate);
+                    shipDate.setHours(12, 0, 0, 0); // Set to noon to avoid timezone issues
+                    
+                    const inRange = shipDate >= fromDate && shipDate <= toDate;
+                    return inRange;
+                });
+                console.log(`Filtered shipped items from ${beforeCount} to ${filteredDataShipped.length} based on ship date`);
+                
+                // Rest of your existing code...
+            }
+        }
+        
+        function groupDataByTestId(data) {
+            const grouped = {};
+            data.forEach(item => {
+                const testId = item.Calculated_Test || 'Unknown';
+                if (!grouped[testId]) {
+                    grouped[testId] = [];
+                }
+                grouped[testId].push(item);
+            });
+            return grouped;
+        }
+        
+        // Group shipped data by order number
+        function groupDataByOrderNum(data) {
+            const grouped = {};
+            data.forEach(item => {
+                const orderNum = item.ShipDtl_OrderNum || 'Unknown';
+                if (!grouped[orderNum]) {
+                    grouped[orderNum] = [];
+                }
+                grouped[orderNum].push(item);
+            });
+            return grouped;
+        }
+
+        // UI state management
+        function saveExpandedState() {
+            expandedAccordions1.clear();
+            expandedAccordions2.clear();
+            expandedAccordionsShipped.clear(); // Add this line
+            
+            // Existing code for primary and secondary columns...
+            
+            // Add this to save expanded state for shipped column
+            document.querySelectorAll('#data-container-shipped .accordion-header').forEach((header, index) => {
+                const content = header.nextElementSibling;
+                if (content && content.classList.contains('show')) {
+                    const orderId = header.querySelector('div').textContent.replace('Order: ', '');
+                    expandedAccordionsShipped.add(orderId);
+                }
+            });
+        }
+
+        function restoreExpandedState() {
+            // Existing code for primary and secondary columns...
+            
+            // Add this to restore expanded state for shipped column
+            document.querySelectorAll('#data-container-shipped .accordion-header').forEach((header) => {
+                const orderId = header.querySelector('div').textContent.replace('Order: ', '');
+                if (expandedAccordionsShipped.has(orderId)) {
+                    const content = header.nextElementSibling;
+                    if (content) {
+                        content.classList.add('show');
+                    }
+                }
+            });
+        }
+        
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            if (content) {
+                content.classList.toggle('show');
+            }
+        }
+
+        // Add this function to create a mapping from order numbers to ship-to numbers
+        function createOrderToShipToMap(data) {
+            const orderToShipToMap = {};
+            data.forEach(item => {
+                if (item.Calculated_Test && item.OrderHed_ShipToNum) {
+                    orderToShipToMap[item.Calculated_Test] = item.OrderHed_ShipToNum;
+                }
+            });
+            return orderToShipToMap;
+        }
+
+        // Display rendering
+        function processAndDisplayData() {
+            // Group by Calculated_Test
+            const groupedByTest1 = groupDataByTestId(filteredData1);
+            const groupedByTest2 = groupDataByTestId(filteredData2);
+            const groupedByOrderShipped = groupDataByOrderNum(filteredDataShipped);
+            
+            // Get test IDs from test.json (first dataset) and sort them alphabetically
+            const testIds = Object.keys(groupedByTest1)
+                .filter(key => key !== 'Unknown' && key);
+            const sortedTestIds = testIds.sort((a, b) => String(a).localeCompare(String(b)));
+            
+            // Get all unique shipped order numbers and sort them alphabetically
+            const shippedOrderNums = Object.keys(groupedByOrderShipped)
+                .filter(key => key !== 'Unknown' && key);
+            const sortedShippedOrderNums = shippedOrderNums.sort((a, b) => String(a).localeCompare(String(b)));
+            
+            // Sort items within each group alphabetically by part number
+            Object.keys(groupedByTest1).forEach(testId => {
+                groupedByTest1[testId].sort((a, b) => {
+                    return (a.MtlQueue_PartNum || '').localeCompare(b.MtlQueue_PartNum || '');
+                });
+            });
+            
+            Object.keys(groupedByTest2).forEach(testId => {
+                groupedByTest2[testId].sort((a, b) => {
+                    return (a.MtlQueue_PartNum || '').localeCompare(b.MtlQueue_PartNum || '');
+                });
+            });
+            
+            Object.keys(groupedByOrderShipped).forEach(orderNum => {
+                groupedByOrderShipped[orderNum].sort((a, b) => {
+                    return (a.ShipDtl_PartNum || '').localeCompare(b.ShipDtl_PartNum || '');
+                });
+            });
+            
+            // Generate HTML for all three columns
+            let html1 = '';
+            let html2 = '';
+            let htmlShipped = '';
+            
+            // Rest of the function remains the same...
+
+            // Process first two columns as before
+            sortedTestIds.forEach(testId => {
+                // Get items from both datasets (or empty array if none)
+                const items1 = groupedByTest1[testId] || [];
+                const items2 = groupedByTest2[testId] || [];
+                
+                // Generate HTML for first column
+                const countsMatch = items2.length === 0 || items1.length === items2.length;
+                html1 += generateAccordion(testId, items1, 'primary', countsMatch);
+                
+                // Generate HTML for second column
+                if (items2.length > 0) {
+                    html2 += generateAccordion(testId, items2, 'secondary', true);
+                } else {
+                    const uniqueId = `secondary-${testId.replace(/\W+/g, '-')}`;
+                    html2 += `
+<div class="accordion" data-test-id="${testId}">
+    <div class="accordion-placeholder" onclick="toggleAccordion('${uniqueId}')">Order ${testId} - Not Scanned</div>
+    <div id="${uniqueId}" class="accordion-content">
+        <table>
+            <thead>
+                <tr>
+                    <th>Part</th>
+                    <th>QTY</th>
+                    <th>Scanned On</th>
+                    <th>Warehouse</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="4" style="text-align: center; font-style: italic;">Not Scanned</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>`;
+                }
+            });
+            
+            // Create mapping from order numbers to ship-to numbers
+            const orderToShipToMap = createOrderToShipToMap(allData1);
+            
+            // Process third column independently - all shipped orders
+            sortedShippedOrderNums.forEach(orderNum => {
+                const items = groupedByOrderShipped[orderNum] || [];
+                htmlShipped += generateShippedAccordion(orderNum, items, 'shipped', orderToShipToMap);
+            });
+            
+            // Update each container separately
+            document.getElementById('data-container-primary').innerHTML = html1 || '<p>No matching records found</p>';
+            document.getElementById('data-container-secondary').innerHTML = html2 || '<p>No matching records found</p>';
+            document.getElementById('data-container-shipped').innerHTML = htmlShipped || '<p>No matching records found</p>';
+        }
+
+        function generateAccordion(testId, items, containerId, countsMatch) {
+            const uniqueId = `${containerId}-${testId.replace(/\W+/g, '-')}`;
+            const badgeClass = (containerId === 'primary' && !countsMatch) ? 'count-badge mismatch' : 'count-badge';
+            
+            // Find timestamp for this testId (if available)
+            let timestampDisplay = "";
+            if (items.length > 0 && items[0].Added_Timestamp) {
+                const timestamp = new Date(items[0].Added_Timestamp);
+                timestampDisplay = timestamp.toLocaleString();
+            }
+            
+            // Get ShipToNum if available
+            const shipToNum = (items.length > 0 && items[0].OrderHed_ShipToNum) ? 
+                items[0].OrderHed_ShipToNum : '';
+            
+            // Find GS1 data for this testId (if available)
+            const gs1Data = items.length > 0 ? (items[0].Calculated_GS1 || '').replace(/\s+/g, '') : '';
+            
+            // Create different column headers based on which column we're displaying
+            const dateHeader = containerId === 'secondary' ? 'Scanned On' : 'Date';
+            
+            let html = `
+                <div class="accordion" data-test-id="${testId}" data-gs1="${gs1Data}">
+                    <div class="accordion-header" onclick="toggleAccordion('${uniqueId}')">
+                        <div class="unique-number-container">Pic Num: ${testId}</div>
+                        ${shipToNum ? '<div class="shipto-badge">' + shipToNum + '</div>' : ''}
+                        <div class="timestamp-display">${timestampDisplay}</div>
+                        <div class="${badgeClass}">${items.length} items</div>
+                    </div>
+                    <div id="${uniqueId}" class="accordion-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Part</th>
+                                    <th>QTY</th>
+                                    <th>${dateHeader}</th>
+                                    <th>Warehouse</th>
+                                </tr>
+                            </thead>
+                            <tbody>`;
+            
+            items.forEach(item => {
+                const rowClass = item.isNew ? 'new-item' : (item.isUpdated ? 'updated' : '');
+                // Remove spaces from GS1 code (still process it for data attributes)
+                const gs1 = (item.Calculated_GS1 || '').replace(/\s+/g, '');
+                const warehouse = item.Calculated_Warehouse || '';
+                
+                html += `
+                    <tr class="${rowClass}" data-gs1="${gs1}" data-warehouse="${warehouse}">
+                        <td>${item.MtlQueue_PartNum || ''}</td>
+                        <td>${item.Calculated_Quantity || parseInt(item.MtlQueue_Quantity) || ''}</td>
+                        <td>${item.MtlQueue_NeedByDate ? new Date(item.MtlQueue_NeedByDate).toLocaleDateString() : ''}</td>
+                        <td>${warehouse}</td>
+                    </tr>
+                `;
+            });
+            
+            html += `
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+            
+            return html;
+        }
+        
+        function generateShippedAccordion(orderNum, items, containerId, orderToShipToMap) {
+            const uniqueId = `${containerId}-${orderNum.replace(/\W+/g, '-')}`;
+            
+            // Count matches for this order
+            const matchCount = countMatches(orderNum, items, allData2);
+            
+            // Add match count badge if there are matches
+            const matchBadge = matchCount > 0 ? 
+                `<div class="shipto-badge" style="background-color: white; color: black;">${matchCount} scanned</div>` : '';
+            
+            let html = `
+                <div class="accordion" data-order-num="${orderNum}">
+                    <div class="accordion-header" onclick="toggleAccordion('${uniqueId}')">
+                        <div class="unique-number-container">Order: ${orderNum}</div>
+                        ${matchBadge}
+                        <div class="count-badge">${items.length} items</div>
+                    </div>
+                    <div id="${uniqueId}" class="accordion-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Part</th>
+                                    <th>QTY</th>
+                                    <th>Date</th>
+                                    <th>Ship Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>`;
+            
+            items.forEach(item => {
+                const rowClass = item.isNew ? 'new-item' : (item.isUpdated ? 'updated' : '');
+                
+                // Format the quantity as an integer
+                const quantity = item.ShipDtl_OurInventoryShipQty ? 
+                    parseInt(item.ShipDtl_OurInventoryShipQty) : '';
+                
+                // Highlight rows with matches
+                const hasMatch = allData2.some(secondItem => {
+                    // Skip TEST records
+                    if (secondItem.Calculated_Test === "TEST") return false;
+
+                    // Check order number prefix (first 5 characters)
+                    const orderPrefix = secondItem.Calculated_Test ? secondItem.Calculated_Test.substring(0, 5) : '';
+                    if (String(item.ShipDtl_OrderNum).substring(0, 5) !== orderPrefix) return false;
+                    
+                    // Get LotNum value - either from direct property or by extraction
+                    let lotNum = secondItem.LotNum;
+                    
+                    // If we have a direct LotNum match, use it
+                    if (lotNum && item.ShipDtl_LotNum === lotNum) return true;
+                    
+                    // Only attempt extraction if part number is long enough
+                    if (!lotNum && secondItem.MtlQueue_PartNum) {
+                        // Skip if part number is too short for extraction
+                        if (secondItem.MtlQueue_PartNum.length < 8) return false;
+                        
+                        try {
+                            // For long part numbers, extract first 8 digits from last 16
+                            if (secondItem.MtlQueue_PartNum.length >= 16) {
+                                const last16 = secondItem.MtlQueue_PartNum.slice(-16);
+                                lotNum = last16.substring(0, 8);
+                                return item.ShipDtl_LotNum === lotNum;
+                            }
+                            
+                            // For medium-length part numbers, just check if LotNum includes last 8 digits
+                            if (secondItem.MtlQueue_PartNum.length >= 8) {
+                                const last8 = secondItem.MtlQueue_PartNum.slice(-8);
+                                return item.ShipDtl_LotNum && item.ShipDtl_LotNum.includes(last8);
+                            }
+                        } catch (error) {
+                            console.log(`Error comparing ${secondItem.MtlQueue_PartNum}: ${error.message}`);
+                            return false;
+                        }
+                    }
+                    
+                    return false;
+                });
+                
+                const matchClass = hasMatch ? 'background-color: #e6f7ff;' : '';
+                
+                html += `
+                    <tr class="${rowClass}" style="${matchClass}">
+                        <td>${item.ShipDtl_PartNum || ''}</td>
+                        <td>${quantity}</td>
+                        <td>${item.OrderDtl_RequestDate ? new Date(item.OrderDtl_RequestDate).toLocaleDateString() : ''}</td>
+                        <td>${item.Calculated_ActualShipDate ? new Date(item.Calculated_ActualShipDate).toLocaleDateString() : ''}</td>
+                    </tr>
+                `;
+            });
+            
+            html += `
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+            
+            return html;
+        }
+
+        // Search functionality
+        function searchData() {
+            // Update filtered data based on search term
+            updateFilteredData();
+            
+            // Save expanded state before updating
+            saveExpandedState();
+            
+            // Update the display
+            processAndDisplayData();
+            updateTotals();  // Add this line
+            // Restore expanded state after updating
+            restoreExpandedState();
+        }
+        
+        // Event handlers
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initial data load
+            fetchData();
+            
+            // Add event listeners for search
+            document.getElementById('search-button').addEventListener('click', searchData);
+            document.getElementById('clear-button').addEventListener('click', function() {
+                document.getElementById('search-input').value = '';
+                document.getElementById('date-from').value = '';
+                document.getElementById('date-to').value = '';
+                
+                updateFilteredData();
+                
+                // Save expanded state before updating
+                saveExpandedState();
+                
+                // Update the display
+                processAndDisplayData();
+                updateTotals();  // Add this line
+                // Restore expanded state after updating
+                restoreExpandedState();
+            });
+            
+            // Add event listener for Enter key in search input
+            document.getElementById('search-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchData();
+                }
+            });
+            
+            // Add event listeners for date range filtering
+            document.getElementById('apply-date-filter').addEventListener('click', function() {
+                updateFilteredData();
+                
+                // Save expanded state before updating
+                saveExpandedState();
+                
+                // Update the display
+                processAndDisplayData();
+                updateTotals();  // Add this line
+                // Restore expanded state after updating
+                restoreExpandedState();
+            });
+
+            document.getElementById('clear-date-filter').addEventListener('click', function() {
+                document.getElementById('date-from').value = '';
+                document.getElementById('date-to').value = '';
+                
+                updateFilteredData();
+                
+                // Save expanded state before updating
+                saveExpandedState();
+                
+                // Update the display
+                processAndDisplayData();
+                updateTotals();  // Add this line
+                // Restore expanded state after updating
+                restoreExpandedState();
+            });
+            
+            // Add this to your DOMContentLoaded function
+            document.getElementById('refresh-button').addEventListener('click', function() {
+                console.log("Manual refresh requested");
+                fetchData();
+            });
+        });
+
+        function updateTotals() {
+            // Group by Calculated_Test to count unique orders
+            const groupedByTest1 = groupDataByTestId(filteredData1);
+            const groupedByTest2 = groupDataByTestId(filteredData2);
+            const groupedByOrderShipped = groupDataByOrderNum(filteredDataShipped);
+            
+            const filteredUniqueCount1 = Object.keys(groupedByTest1)
+                .filter(key => key !== 'Unknown' && key)
+                .length;
+            const filteredUniqueCount2 = Object.keys(groupedByTest2)
+                .filter(key => key !== 'Unknown' && key)
+                .length;
+            const filteredUniqueCountShipped = Object.keys(groupedByOrderShipped)
+                .filter(key => key !== 'Unknown' && key)
+                .length;
+            
+            const totalItems1 = filteredData1.length;
+            const totalItems2 = filteredData2.length;
+            const totalItemsShipped = filteredDataShipped.length;
+            
+            // Calculate total matched items
+            let totalMatched = 0;
+            Object.keys(groupedByOrderShipped).forEach(orderNum => {
+                const items = groupedByOrderShipped[orderNum] || [];
+                totalMatched += countMatches(orderNum, items, allData2);
+            });
+            
+            // Update each dataset's counts separately
+            document.getElementById('total1-unique').textContent = filteredUniqueCount1;
+            document.getElementById('total1-items').textContent = totalItems1;
+            document.getElementById('total2-unique').textContent = filteredUniqueCount2;
+            document.getElementById('total2-items').textContent = totalItems2;
+            document.getElementById('total-shipped-unique').textContent = filteredUniqueCountShipped;
+            document.getElementById('total-shipped-items').textContent = totalItemsShipped;
+            document.getElementById('total-shipped-matched').textContent = totalMatched; // Add this line
+        }
+    </script>
+</body>
+</html>

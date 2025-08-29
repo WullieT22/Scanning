@@ -1,0 +1,849 @@
+2025-08-12 09:42:23,774 - INFO - ==== SCRIPT STARTED ====
+2025-08-12 09:42:23,775 - INFO - Starting API fetch script - polling every 120 seconds continuously
+2025-08-12 09:42:23,776 - INFO - ==== POLLING CYCLE STARTED: 09:42:23 ====
+2025-08-12 09:42:23,777 - INFO - Starting fetch_additional_data()...
+2025-08-12 09:42:27,623 - INFO - Current unique orders in file: 12033
+2025-08-12 09:42:27,630 - INFO - No new unique orders to append
+2025-08-12 09:42:27,630 - INFO - Total unique orders remains: 12033
+2025-08-12 09:42:27,649 - INFO - fetch_additional_data() completed successfully
+2025-08-12 09:42:27,649 - INFO - Starting fetch_second_api()...
+2025-08-12 09:42:27,649 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 09:42:39,443 - INFO - ==== SCRIPT STARTED ====
+2025-08-12 09:42:39,443 - INFO - Starting API fetch script - polling every 120 seconds continuously
+2025-08-12 09:42:39,443 - INFO - ==== POLLING CYCLE STARTED: 09:42:39 ====
+2025-08-12 09:42:39,443 - INFO - Starting fetch_additional_data()...
+2025-08-12 09:42:40,615 - INFO - Current unique orders in file: 12033
+2025-08-12 09:42:40,621 - INFO - No new unique orders to append
+2025-08-12 09:42:40,621 - INFO - Total unique orders remains: 12033
+2025-08-12 09:42:40,642 - INFO - fetch_additional_data() completed successfully
+2025-08-12 09:42:40,642 - INFO - Starting fetch_second_api()...
+2025-08-12 09:42:40,642 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 09:43:02,996 - INFO - Received 63181 items from API
+2025-08-12 09:43:03,004 - INFO - Filtered out 1 TEST records
+2025-08-12 09:43:04,351 - INFO - Written 63180 items to second.json
+2025-08-12 09:43:04,380 - INFO - fetch_second_api() completed successfully
+2025-08-12 09:43:04,381 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 09:43:34,930 - INFO - Current unique shipped orders in file: 8969
+2025-08-12 09:43:34,945 - INFO - No new unique shipped orders to append
+2025-08-12 09:43:34,945 - INFO - Total unique shipped orders remains: 8969
+2025-08-12 09:43:34,961 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 09:43:34,961 - INFO - All API calls completed successfully
+2025-08-12 09:43:34,961 - INFO - Processing took 55.52 seconds
+2025-08-12 09:43:34,961 - INFO - Waiting 64.48 seconds until next poll...
+2025-08-12 09:44:00,566 - INFO - ==== SCRIPT STARTED ====
+2025-08-12 09:44:00,566 - INFO - Starting API fetch script - polling every 120 seconds continuously
+2025-08-12 09:44:00,566 - INFO - ==== POLLING CYCLE STARTED: 09:44:00 ====
+2025-08-12 09:44:00,567 - INFO - Starting fetch_additional_data()...
+2025-08-12 09:44:01,647 - INFO - Current unique orders in file: 12033
+2025-08-12 09:44:01,653 - INFO - No new unique orders to append
+2025-08-12 09:44:01,654 - INFO - Total unique orders remains: 12033
+2025-08-12 09:44:01,676 - INFO - fetch_additional_data() completed successfully
+2025-08-12 09:44:01,676 - INFO - Starting fetch_second_api()...
+2025-08-12 09:44:01,676 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 09:44:39,458 - INFO - ==== POLLING CYCLE STARTED: 09:44:39 ====
+2025-08-12 09:44:39,458 - INFO - Starting fetch_additional_data()...
+2025-08-12 09:44:40,499 - INFO - Current unique orders in file: 12033
+2025-08-12 09:44:40,506 - INFO - No new unique orders to append
+2025-08-12 09:44:40,506 - INFO - Total unique orders remains: 12033
+2025-08-12 09:44:40,525 - INFO - fetch_additional_data() completed successfully
+2025-08-12 09:44:40,525 - INFO - Starting fetch_second_api()...
+2025-08-12 09:44:40,526 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 09:45:03,232 - INFO - Received 63182 items from API
+2025-08-12 09:45:03,239 - INFO - Filtered out 1 TEST records
+2025-08-12 09:45:04,619 - INFO - Written 63181 items to second.json
+2025-08-12 09:45:04,650 - INFO - fetch_second_api() completed successfully
+2025-08-12 09:45:04,651 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 09:45:27,014 - INFO - Current unique shipped orders in file: 8969
+2025-08-12 09:45:27,026 - INFO - No new unique shipped orders to append
+2025-08-12 09:45:27,026 - INFO - Total unique shipped orders remains: 8969
+2025-08-12 09:45:27,054 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 09:45:27,054 - INFO - All API calls completed successfully
+2025-08-12 09:45:27,054 - INFO - Processing took 47.60 seconds
+2025-08-12 09:45:27,055 - INFO - Waiting 72.40 seconds until next poll...
+2025-08-12 09:46:39,459 - INFO - ==== POLLING CYCLE STARTED: 09:46:39 ====
+2025-08-12 09:46:39,459 - INFO - Starting fetch_additional_data()...
+2025-08-12 09:46:40,414 - INFO - Current unique orders in file: 12033
+2025-08-12 09:46:40,419 - INFO - No new unique orders to append
+2025-08-12 09:46:40,420 - INFO - Total unique orders remains: 12033
+2025-08-12 09:46:40,438 - INFO - fetch_additional_data() completed successfully
+2025-08-12 09:46:40,438 - INFO - Starting fetch_second_api()...
+2025-08-12 09:46:40,438 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 09:47:02,779 - INFO - Received 63183 items from API
+2025-08-12 09:47:02,786 - INFO - Filtered out 1 TEST records
+2025-08-12 09:47:04,113 - INFO - Written 63182 items to second.json
+2025-08-12 09:47:04,142 - INFO - fetch_second_api() completed successfully
+2025-08-12 09:47:04,143 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 09:47:26,044 - INFO - Current unique shipped orders in file: 8969
+2025-08-12 09:47:26,056 - INFO - No new unique shipped orders to append
+2025-08-12 09:47:26,056 - INFO - Total unique shipped orders remains: 8969
+2025-08-12 09:47:26,083 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 09:47:26,084 - INFO - All API calls completed successfully
+2025-08-12 09:47:26,084 - INFO - Processing took 46.62 seconds
+2025-08-12 09:47:26,084 - INFO - Waiting 73.38 seconds until next poll...
+2025-08-12 09:48:39,461 - INFO - ==== POLLING CYCLE STARTED: 09:48:39 ====
+2025-08-12 09:48:39,462 - INFO - Starting fetch_additional_data()...
+2025-08-12 09:48:40,418 - INFO - Current unique orders in file: 12033
+2025-08-12 09:48:40,423 - INFO - No new unique orders to append
+2025-08-12 09:48:40,424 - INFO - Total unique orders remains: 12033
+2025-08-12 09:48:40,443 - INFO - fetch_additional_data() completed successfully
+2025-08-12 09:48:40,443 - INFO - Starting fetch_second_api()...
+2025-08-12 09:48:40,444 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 09:49:02,871 - INFO - Received 63186 items from API
+2025-08-12 09:49:02,878 - INFO - Filtered out 1 TEST records
+2025-08-12 09:49:04,195 - INFO - Written 63185 items to second.json
+2025-08-12 09:49:04,224 - INFO - fetch_second_api() completed successfully
+2025-08-12 09:49:04,224 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 09:49:27,481 - INFO - Current unique shipped orders in file: 8969
+2025-08-12 09:49:27,493 - INFO - No new unique shipped orders to append
+2025-08-12 09:49:27,494 - INFO - Total unique shipped orders remains: 8969
+2025-08-12 09:49:27,521 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 09:49:27,522 - INFO - All API calls completed successfully
+2025-08-12 09:49:27,523 - INFO - Processing took 48.06 seconds
+2025-08-12 09:49:27,523 - INFO - Waiting 71.94 seconds until next poll...
+2025-08-12 09:50:39,463 - INFO - ==== POLLING CYCLE STARTED: 09:50:39 ====
+2025-08-12 09:50:39,464 - INFO - Starting fetch_additional_data()...
+2025-08-12 09:50:45,572 - INFO - Current unique orders in file: 12033
+2025-08-12 09:50:45,580 - INFO - No new unique orders to append
+2025-08-12 09:50:45,580 - INFO - Total unique orders remains: 12033
+2025-08-12 09:50:45,601 - INFO - fetch_additional_data() completed successfully
+2025-08-12 09:50:45,601 - INFO - Starting fetch_second_api()...
+2025-08-12 09:50:45,602 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 09:51:07,976 - INFO - Received 63188 items from API
+2025-08-12 09:51:07,985 - INFO - Filtered out 1 TEST records
+2025-08-12 09:51:09,314 - INFO - Written 63187 items to second.json
+2025-08-12 09:51:09,342 - INFO - fetch_second_api() completed successfully
+2025-08-12 09:51:09,343 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 09:51:31,578 - INFO - Current unique shipped orders in file: 8969
+2025-08-12 09:51:31,593 - INFO - No new unique shipped orders to append
+2025-08-12 09:51:31,594 - INFO - Total unique shipped orders remains: 8969
+2025-08-12 09:51:31,624 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 09:51:31,624 - INFO - All API calls completed successfully
+2025-08-12 09:51:31,625 - INFO - Processing took 52.16 seconds
+2025-08-12 09:51:31,625 - INFO - Waiting 67.84 seconds until next poll...
+2025-08-12 09:52:39,465 - INFO - ==== POLLING CYCLE STARTED: 09:52:39 ====
+2025-08-12 09:52:39,465 - INFO - Starting fetch_additional_data()...
+2025-08-12 09:52:45,661 - INFO - Current unique orders in file: 12033
+2025-08-12 09:52:45,667 - INFO - No new unique orders to append
+2025-08-12 09:52:45,668 - INFO - Total unique orders remains: 12033
+2025-08-12 09:52:45,685 - INFO - fetch_additional_data() completed successfully
+2025-08-12 09:52:45,686 - INFO - Starting fetch_second_api()...
+2025-08-12 09:52:45,686 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 09:53:07,990 - INFO - Received 63193 items from API
+2025-08-12 09:53:07,998 - INFO - Filtered out 1 TEST records
+2025-08-12 09:53:09,336 - INFO - Written 63192 items to second.json
+2025-08-12 09:53:09,365 - INFO - fetch_second_api() completed successfully
+2025-08-12 09:53:09,365 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 09:53:31,456 - INFO - Current unique shipped orders in file: 8969
+2025-08-12 09:53:31,469 - INFO - No new unique shipped orders to append
+2025-08-12 09:53:31,469 - INFO - Total unique shipped orders remains: 8969
+2025-08-12 09:53:31,496 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 09:53:31,497 - INFO - All API calls completed successfully
+2025-08-12 09:53:31,497 - INFO - Processing took 52.03 seconds
+2025-08-12 09:53:31,497 - INFO - Waiting 67.97 seconds until next poll...
+2025-08-12 09:54:39,467 - INFO - ==== POLLING CYCLE STARTED: 09:54:39 ====
+2025-08-12 09:54:39,467 - INFO - Starting fetch_additional_data()...
+2025-08-12 09:54:45,228 - INFO - Current unique orders in file: 12033
+2025-08-12 09:54:45,234 - INFO - No new unique orders to append
+2025-08-12 09:54:45,235 - INFO - Total unique orders remains: 12033
+2025-08-12 09:54:45,252 - INFO - fetch_additional_data() completed successfully
+2025-08-12 09:54:45,253 - INFO - Starting fetch_second_api()...
+2025-08-12 09:54:45,254 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 09:55:07,611 - INFO - Received 63194 items from API
+2025-08-12 09:55:07,618 - INFO - Filtered out 1 TEST records
+2025-08-12 09:55:08,937 - INFO - Written 63193 items to second.json
+2025-08-12 09:55:08,968 - INFO - fetch_second_api() completed successfully
+2025-08-12 09:55:08,968 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 09:55:31,092 - INFO - Current unique shipped orders in file: 8969
+2025-08-12 09:55:32,573 - INFO - 
+Found 1 new unique shipped orders:
+2025-08-12 09:55:32,573 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,573 - INFO - Order Number: 93124
+2025-08-12 09:55:32,574 - INFO - Part Number: PP0080-P090
+2025-08-12 09:55:32,574 - INFO - Quantity: N/A
+2025-08-12 09:55:32,574 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 09:55:32,575 - INFO - Shipped On Date: N/A
+2025-08-12 09:55:32,575 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,576 - INFO - Order Number: 93124
+2025-08-12 09:55:32,576 - INFO - Part Number: BM0370-M002-10
+2025-08-12 09:55:32,576 - INFO - Quantity: N/A
+2025-08-12 09:55:32,576 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 09:55:32,577 - INFO - Shipped On Date: N/A
+2025-08-12 09:55:32,577 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,577 - INFO - Order Number: 93124
+2025-08-12 09:55:32,578 - INFO - Part Number: PP0120-P090
+2025-08-12 09:55:32,578 - INFO - Quantity: N/A
+2025-08-12 09:55:32,578 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 09:55:32,578 - INFO - Shipped On Date: N/A
+2025-08-12 09:55:32,579 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,579 - INFO - Order Number: 93124
+2025-08-12 09:55:32,579 - INFO - Part Number: PP0100-P090
+2025-08-12 09:55:32,579 - INFO - Quantity: N/A
+2025-08-12 09:55:32,579 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 09:55:32,580 - INFO - Shipped On Date: N/A
+2025-08-12 09:55:32,580 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,580 - INFO - Order Number: 93124
+2025-08-12 09:55:32,581 - INFO - Part Number: PP3059-P090
+2025-08-12 09:55:32,581 - INFO - Quantity: N/A
+2025-08-12 09:55:32,581 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 09:55:32,581 - INFO - Shipped On Date: N/A
+2025-08-12 09:55:32,582 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,582 - INFO - Order Number: 93124
+2025-08-12 09:55:32,582 - INFO - Part Number: PP1080-P090
+2025-08-12 09:55:32,582 - INFO - Quantity: N/A
+2025-08-12 09:55:32,583 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 09:55:32,583 - INFO - Shipped On Date: N/A
+2025-08-12 09:55:32,583 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,583 - INFO - Order Number: 93124
+2025-08-12 09:55:32,584 - INFO - Part Number: PP0140-P090
+2025-08-12 09:55:32,584 - INFO - Quantity: N/A
+2025-08-12 09:55:32,584 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 09:55:32,584 - INFO - Shipped On Date: N/A
+2025-08-12 09:55:32,585 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,585 - INFO - Order Number: 93124
+2025-08-12 09:55:32,585 - INFO - Part Number: PP0400-P090
+2025-08-12 09:55:32,585 - INFO - Quantity: N/A
+2025-08-12 09:55:32,586 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 09:55:32,586 - INFO - Shipped On Date: N/A
+2025-08-12 09:55:32,586 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,586 - INFO - Order Number: 93124
+2025-08-12 09:55:32,586 - INFO - Part Number: PP0780-P090
+2025-08-12 09:55:32,587 - INFO - Quantity: N/A
+2025-08-12 09:55:32,587 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 09:55:32,587 - INFO - Shipped On Date: N/A
+2025-08-12 09:55:32,587 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,587 - INFO - Order Number: 93124
+2025-08-12 09:55:32,588 - INFO - Part Number: PP2280-P090
+2025-08-12 09:55:32,588 - INFO - Quantity: N/A
+2025-08-12 09:55:32,588 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 09:55:32,588 - INFO - Shipped On Date: N/A
+2025-08-12 09:55:32,588 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,588 - INFO - Order Number: 93124
+2025-08-12 09:55:32,589 - INFO - Part Number: PP2280-P090
+2025-08-12 09:55:32,589 - INFO - Quantity: N/A
+2025-08-12 09:55:32,589 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 09:55:32,589 - INFO - Shipped On Date: N/A
+2025-08-12 09:55:32,589 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,590 - INFO - Order Number: 93124
+2025-08-12 09:55:32,590 - INFO - Part Number: BM0384-M036-3
+2025-08-12 09:55:32,590 - INFO - Quantity: N/A
+2025-08-12 09:55:32,590 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 09:55:32,591 - INFO - Shipped On Date: N/A
+2025-08-12 09:55:32,591 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,591 - INFO - Order Number: 93124
+2025-08-12 09:55:32,591 - INFO - Part Number: BM0384-M036-3
+2025-08-12 09:55:32,591 - INFO - Quantity: N/A
+2025-08-12 09:55:32,591 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 09:55:32,591 - INFO - Shipped On Date: N/A
+2025-08-12 09:55:32,592 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,592 - INFO - Order Number: 93124
+2025-08-12 09:55:32,592 - INFO - Part Number: PP0320-P090
+2025-08-12 09:55:32,592 - INFO - Quantity: N/A
+2025-08-12 09:55:32,593 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 09:55:32,593 - INFO - Shipped On Date: N/A
+2025-08-12 09:55:32,593 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,594 - INFO - Order Number: 93124
+2025-08-12 09:55:32,594 - INFO - Part Number: PP0130-P090
+2025-08-12 09:55:32,594 - INFO - Quantity: N/A
+2025-08-12 09:55:32,595 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 09:55:32,595 - INFO - Shipped On Date: N/A
+2025-08-12 09:55:32,595 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,595 - INFO - Order Number: 93124
+2025-08-12 09:55:32,595 - INFO - Part Number: PP0220-P090
+2025-08-12 09:55:32,596 - INFO - Quantity: N/A
+2025-08-12 09:55:32,596 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 09:55:32,596 - INFO - Shipped On Date: N/A
+2025-08-12 09:55:32,596 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,596 - INFO - Order Number: 93124
+2025-08-12 09:55:32,597 - INFO - Part Number: PP1560-P090
+2025-08-12 09:55:32,597 - INFO - Quantity: N/A
+2025-08-12 09:55:32,597 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 09:55:32,597 - INFO - Shipped On Date: N/A
+2025-08-12 09:55:32,597 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,598 - INFO - Order Number: 93124
+2025-08-12 09:55:32,598 - INFO - Part Number: PP0630-P090
+2025-08-12 09:55:32,598 - INFO - Quantity: N/A
+2025-08-12 09:55:32,598 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 09:55:32,598 - INFO - Shipped On Date: N/A
+2025-08-12 09:55:32,599 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,599 - INFO - Order Number: 93124
+2025-08-12 09:55:32,599 - INFO - Part Number: BM0650-R125-100
+2025-08-12 09:55:32,599 - INFO - Quantity: N/A
+2025-08-12 09:55:32,599 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 09:55:32,600 - INFO - Shipped On Date: N/A
+2025-08-12 09:55:32,600 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,600 - INFO - Order Number: 93124
+2025-08-12 09:55:32,600 - INFO - Part Number: PP0610-P090
+2025-08-12 09:55:32,600 - INFO - Quantity: N/A
+2025-08-12 09:55:32,600 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 09:55:32,601 - INFO - Shipped On Date: N/A
+2025-08-12 09:55:32,601 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,601 - INFO - Order Number: 93124
+2025-08-12 09:55:32,601 - INFO - Part Number: PP0350-P090
+2025-08-12 09:55:32,601 - INFO - Quantity: N/A
+2025-08-12 09:55:32,602 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 09:55:32,602 - INFO - Shipped On Date: N/A
+2025-08-12 09:55:32,602 - INFO - --------------------------------------------------
+2025-08-12 09:55:32,611 - INFO - Total unique shipped orders after append: 8970
+2025-08-12 09:55:32,638 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 09:55:32,638 - INFO - All API calls completed successfully
+2025-08-12 09:55:32,638 - INFO - Processing took 53.17 seconds
+2025-08-12 09:55:32,639 - INFO - Waiting 66.83 seconds until next poll...
+2025-08-12 09:56:39,469 - INFO - ==== POLLING CYCLE STARTED: 09:56:39 ====
+2025-08-12 09:56:39,469 - INFO - Starting fetch_additional_data()...
+2025-08-12 09:56:45,916 - INFO - Current unique orders in file: 12033
+2025-08-12 09:56:45,922 - INFO - No new unique orders to append
+2025-08-12 09:56:45,922 - INFO - Total unique orders remains: 12033
+2025-08-12 09:56:45,939 - INFO - fetch_additional_data() completed successfully
+2025-08-12 09:56:45,940 - INFO - Starting fetch_second_api()...
+2025-08-12 09:56:45,941 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 09:57:08,288 - INFO - Received 63194 items from API
+2025-08-12 09:57:08,295 - INFO - Filtered out 1 TEST records
+2025-08-12 09:57:09,621 - INFO - Written 63193 items to second.json
+2025-08-12 09:57:09,654 - INFO - fetch_second_api() completed successfully
+2025-08-12 09:57:09,655 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 09:57:31,930 - INFO - Current unique shipped orders in file: 8970
+2025-08-12 09:57:31,943 - INFO - No new unique shipped orders to append
+2025-08-12 09:57:31,943 - INFO - Total unique shipped orders remains: 8970
+2025-08-12 09:57:31,972 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 09:57:31,972 - INFO - All API calls completed successfully
+2025-08-12 09:57:31,973 - INFO - Processing took 52.50 seconds
+2025-08-12 09:57:31,973 - INFO - Waiting 67.50 seconds until next poll...
+2025-08-12 09:58:39,470 - INFO - ==== POLLING CYCLE STARTED: 09:58:39 ====
+2025-08-12 09:58:39,470 - INFO - Starting fetch_additional_data()...
+2025-08-12 09:58:45,273 - INFO - Current unique orders in file: 12033
+2025-08-12 09:58:45,279 - INFO - No new unique orders to append
+2025-08-12 09:58:45,279 - INFO - Total unique orders remains: 12033
+2025-08-12 09:58:45,298 - INFO - fetch_additional_data() completed successfully
+2025-08-12 09:58:45,298 - INFO - Starting fetch_second_api()...
+2025-08-12 09:58:45,298 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 09:59:11,053 - INFO - Received 63194 items from API
+2025-08-12 09:59:11,065 - INFO - Filtered out 1 TEST records
+2025-08-12 09:59:12,433 - INFO - Written 63193 items to second.json
+2025-08-12 09:59:12,462 - INFO - fetch_second_api() completed successfully
+2025-08-12 09:59:12,462 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 09:59:34,848 - INFO - Current unique shipped orders in file: 8970
+2025-08-12 09:59:34,859 - INFO - No new unique shipped orders to append
+2025-08-12 09:59:34,859 - INFO - Total unique shipped orders remains: 8970
+2025-08-12 09:59:34,893 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 09:59:34,893 - INFO - All API calls completed successfully
+2025-08-12 09:59:34,893 - INFO - Processing took 55.42 seconds
+2025-08-12 09:59:34,893 - INFO - Waiting 64.58 seconds until next poll...
+2025-08-12 10:00:39,478 - INFO - ==== POLLING CYCLE STARTED: 10:00:39 ====
+2025-08-12 10:00:39,478 - INFO - Starting fetch_additional_data()...
+2025-08-12 10:00:44,573 - INFO - Current unique orders in file: 12033
+2025-08-12 10:00:44,584 - INFO - No new unique orders to append
+2025-08-12 10:00:44,584 - INFO - Total unique orders remains: 12033
+2025-08-12 10:00:44,606 - INFO - fetch_additional_data() completed successfully
+2025-08-12 10:00:44,607 - INFO - Starting fetch_second_api()...
+2025-08-12 10:00:44,607 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 10:01:07,500 - INFO - Received 63194 items from API
+2025-08-12 10:01:07,507 - INFO - Filtered out 1 TEST records
+2025-08-12 10:01:08,911 - INFO - Written 63193 items to second.json
+2025-08-12 10:01:08,956 - INFO - fetch_second_api() completed successfully
+2025-08-12 10:01:08,957 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 10:01:31,183 - INFO - Current unique shipped orders in file: 8970
+2025-08-12 10:01:31,196 - INFO - No new unique shipped orders to append
+2025-08-12 10:01:31,197 - INFO - Total unique shipped orders remains: 8970
+2025-08-12 10:01:31,224 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 10:01:31,224 - INFO - All API calls completed successfully
+2025-08-12 10:01:31,224 - INFO - Processing took 51.75 seconds
+2025-08-12 10:01:31,225 - INFO - Waiting 68.25 seconds until next poll...
+2025-08-12 10:02:39,480 - INFO - ==== POLLING CYCLE STARTED: 10:02:39 ====
+2025-08-12 10:02:39,482 - INFO - Starting fetch_additional_data()...
+2025-08-12 10:02:44,875 - INFO - Current unique orders in file: 12033
+2025-08-12 10:02:44,881 - INFO - No new unique orders to append
+2025-08-12 10:02:44,882 - INFO - Total unique orders remains: 12033
+2025-08-12 10:02:44,899 - INFO - fetch_additional_data() completed successfully
+2025-08-12 10:02:44,900 - INFO - Starting fetch_second_api()...
+2025-08-12 10:02:44,900 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 10:03:07,272 - INFO - Received 63195 items from API
+2025-08-12 10:03:07,279 - INFO - Filtered out 1 TEST records
+2025-08-12 10:03:08,598 - INFO - Written 63194 items to second.json
+2025-08-12 10:03:08,625 - INFO - fetch_second_api() completed successfully
+2025-08-12 10:03:08,626 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 10:03:31,047 - INFO - Current unique shipped orders in file: 8970
+2025-08-12 10:03:32,579 - INFO - 
+Found 1 new unique shipped orders:
+2025-08-12 10:03:32,579 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,579 - INFO - Order Number: 93130
+2025-08-12 10:03:32,580 - INFO - Part Number: BM0082-5LB-5000
+2025-08-12 10:03:32,580 - INFO - Quantity: N/A
+2025-08-12 10:03:32,580 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,581 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,581 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,581 - INFO - Order Number: 93130
+2025-08-12 10:03:32,582 - INFO - Part Number: BM0082-5LB-5000
+2025-08-12 10:03:32,582 - INFO - Quantity: N/A
+2025-08-12 10:03:32,583 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,583 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,583 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,584 - INFO - Order Number: 93130
+2025-08-12 10:03:32,584 - INFO - Part Number: PP1281-P090
+2025-08-12 10:03:32,584 - INFO - Quantity: N/A
+2025-08-12 10:03:32,584 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,584 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,585 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,585 - INFO - Order Number: 93130
+2025-08-12 10:03:32,585 - INFO - Part Number: BM0760-M002-9
+2025-08-12 10:03:32,585 - INFO - Quantity: N/A
+2025-08-12 10:03:32,586 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,586 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,586 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,586 - INFO - Order Number: 93130
+2025-08-12 10:03:32,587 - INFO - Part Number: BM0650-M002-10
+2025-08-12 10:03:32,587 - INFO - Quantity: N/A
+2025-08-12 10:03:32,587 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,587 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,588 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,588 - INFO - Order Number: 93130
+2025-08-12 10:03:32,588 - INFO - Part Number: BM0470-M002-15
+2025-08-12 10:03:32,588 - INFO - Quantity: N/A
+2025-08-12 10:03:32,589 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,589 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,589 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,589 - INFO - Order Number: 93130
+2025-08-12 10:03:32,589 - INFO - Part Number: PP7021-P090
+2025-08-12 10:03:32,590 - INFO - Quantity: N/A
+2025-08-12 10:03:32,590 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,590 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,590 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,591 - INFO - Order Number: 93130
+2025-08-12 10:03:32,591 - INFO - Part Number: PP1060-P090
+2025-08-12 10:03:32,591 - INFO - Quantity: N/A
+2025-08-12 10:03:32,591 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,591 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,592 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,592 - INFO - Order Number: 93130
+2025-08-12 10:03:32,592 - INFO - Part Number: PP0320-P090
+2025-08-12 10:03:32,592 - INFO - Quantity: N/A
+2025-08-12 10:03:32,592 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,593 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,593 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,593 - INFO - Order Number: 93130
+2025-08-12 10:03:32,593 - INFO - Part Number: PP0260-P090
+2025-08-12 10:03:32,593 - INFO - Quantity: N/A
+2025-08-12 10:03:32,594 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,594 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,594 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,594 - INFO - Order Number: 93130
+2025-08-12 10:03:32,595 - INFO - Part Number: PP0060-P090
+2025-08-12 10:03:32,595 - INFO - Quantity: N/A
+2025-08-12 10:03:32,595 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,595 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,595 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,595 - INFO - Order Number: 93130
+2025-08-12 10:03:32,596 - INFO - Part Number: PP0120-P090
+2025-08-12 10:03:32,596 - INFO - Quantity: N/A
+2025-08-12 10:03:32,596 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,596 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,597 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,597 - INFO - Order Number: 93130
+2025-08-12 10:03:32,597 - INFO - Part Number: PP0050-P090
+2025-08-12 10:03:32,597 - INFO - Quantity: N/A
+2025-08-12 10:03:32,597 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,598 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,598 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,598 - INFO - Order Number: 93130
+2025-08-12 10:03:32,598 - INFO - Part Number: BM0647-R300-225
+2025-08-12 10:03:32,598 - INFO - Quantity: N/A
+2025-08-12 10:03:32,598 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,599 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,599 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,599 - INFO - Order Number: 93130
+2025-08-12 10:03:32,599 - INFO - Part Number: PP0630-P090
+2025-08-12 10:03:32,599 - INFO - Quantity: N/A
+2025-08-12 10:03:32,600 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,600 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,600 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,600 - INFO - Order Number: 93130
+2025-08-12 10:03:32,600 - INFO - Part Number: BM0315-M002-10
+2025-08-12 10:03:32,601 - INFO - Quantity: N/A
+2025-08-12 10:03:32,601 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,601 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,602 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,602 - INFO - Order Number: 93130
+2025-08-12 10:03:32,602 - INFO - Part Number: BM1333-M002-9
+2025-08-12 10:03:32,602 - INFO - Quantity: N/A
+2025-08-12 10:03:32,603 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,603 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,603 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,603 - INFO - Order Number: 93130
+2025-08-12 10:03:32,603 - INFO - Part Number: PP1420-P090
+2025-08-12 10:03:32,604 - INFO - Quantity: N/A
+2025-08-12 10:03:32,604 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,604 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,604 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,604 - INFO - Order Number: 93130
+2025-08-12 10:03:32,605 - INFO - Part Number: PP0690-P090
+2025-08-12 10:03:32,605 - INFO - Quantity: N/A
+2025-08-12 10:03:32,605 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,606 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,606 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,606 - INFO - Order Number: 93130
+2025-08-12 10:03:32,606 - INFO - Part Number: PP0200-P090
+2025-08-12 10:03:32,607 - INFO - Quantity: N/A
+2025-08-12 10:03:32,607 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,607 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,607 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,608 - INFO - Order Number: 93130
+2025-08-12 10:03:32,608 - INFO - Part Number: PP0220-P090
+2025-08-12 10:03:32,608 - INFO - Quantity: N/A
+2025-08-12 10:03:32,608 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,609 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,609 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,609 - INFO - Order Number: 93130
+2025-08-12 10:03:32,609 - INFO - Part Number: PP0280-P090
+2025-08-12 10:03:32,610 - INFO - Quantity: N/A
+2025-08-12 10:03:32,610 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,610 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,610 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,611 - INFO - Order Number: 93130
+2025-08-12 10:03:32,611 - INFO - Part Number: BM0274-M002-20
+2025-08-12 10:03:32,611 - INFO - Quantity: N/A
+2025-08-12 10:03:32,611 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,611 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,612 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,612 - INFO - Order Number: 93130
+2025-08-12 10:03:32,612 - INFO - Part Number: PP0201-P090
+2025-08-12 10:03:32,613 - INFO - Quantity: N/A
+2025-08-12 10:03:32,613 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,613 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,613 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,613 - INFO - Order Number: 93130
+2025-08-12 10:03:32,614 - INFO - Part Number: PP0130-P090
+2025-08-12 10:03:32,614 - INFO - Quantity: N/A
+2025-08-12 10:03:32,614 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,615 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,615 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,615 - INFO - Order Number: 93130
+2025-08-12 10:03:32,615 - INFO - Part Number: BM0980-M002-15
+2025-08-12 10:03:32,615 - INFO - Quantity: N/A
+2025-08-12 10:03:32,616 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,616 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,616 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,616 - INFO - Order Number: 93130
+2025-08-12 10:03:32,616 - INFO - Part Number: PP0110-P090
+2025-08-12 10:03:32,616 - INFO - Quantity: N/A
+2025-08-12 10:03:32,617 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,617 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,617 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,617 - INFO - Order Number: 93130
+2025-08-12 10:03:32,617 - INFO - Part Number: PP0470-P090
+2025-08-12 10:03:32,617 - INFO - Quantity: N/A
+2025-08-12 10:03:32,617 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,618 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,618 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,618 - INFO - Order Number: 93130
+2025-08-12 10:03:32,618 - INFO - Part Number: PP1940-P090
+2025-08-12 10:03:32,618 - INFO - Quantity: N/A
+2025-08-12 10:03:32,618 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,619 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,619 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,619 - INFO - Order Number: 93130
+2025-08-12 10:03:32,619 - INFO - Part Number: BM0860-M003-3
+2025-08-12 10:03:32,619 - INFO - Quantity: N/A
+2025-08-12 10:03:32,619 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,620 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,620 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,620 - INFO - Order Number: 93130
+2025-08-12 10:03:32,620 - INFO - Part Number: PP0935-P090
+2025-08-12 10:03:32,621 - INFO - Quantity: N/A
+2025-08-12 10:03:32,621 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,621 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,621 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,621 - INFO - Order Number: 93130
+2025-08-12 10:03:32,622 - INFO - Part Number: BM0610-M003-5
+2025-08-12 10:03:32,622 - INFO - Quantity: N/A
+2025-08-12 10:03:32,622 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,622 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,622 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,622 - INFO - Order Number: 93130
+2025-08-12 10:03:32,623 - INFO - Part Number: LS5005-V001-500
+2025-08-12 10:03:32,623 - INFO - Quantity: N/A
+2025-08-12 10:03:32,623 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:03:32,623 - INFO - Shipped On Date: N/A
+2025-08-12 10:03:32,624 - INFO - --------------------------------------------------
+2025-08-12 10:03:32,633 - INFO - Total unique shipped orders after append: 8971
+2025-08-12 10:03:32,660 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 10:03:32,660 - INFO - All API calls completed successfully
+2025-08-12 10:03:32,661 - INFO - Processing took 53.18 seconds
+2025-08-12 10:03:32,661 - INFO - Waiting 66.82 seconds until next poll...
+2025-08-12 10:04:39,484 - INFO - ==== POLLING CYCLE STARTED: 10:04:39 ====
+2025-08-12 10:04:39,485 - INFO - Starting fetch_additional_data()...
+2025-08-12 10:04:45,039 - INFO - Current unique orders in file: 12033
+2025-08-12 10:04:45,045 - INFO - No new unique orders to append
+2025-08-12 10:04:45,046 - INFO - Total unique orders remains: 12033
+2025-08-12 10:04:45,063 - INFO - fetch_additional_data() completed successfully
+2025-08-12 10:04:45,064 - INFO - Starting fetch_second_api()...
+2025-08-12 10:04:45,064 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 10:05:07,468 - INFO - Received 63197 items from API
+2025-08-12 10:05:07,475 - INFO - Filtered out 1 TEST records
+2025-08-12 10:05:08,808 - INFO - Written 63196 items to second.json
+2025-08-12 10:05:08,834 - INFO - fetch_second_api() completed successfully
+2025-08-12 10:05:08,834 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 10:05:31,418 - INFO - Current unique shipped orders in file: 8971
+2025-08-12 10:05:31,431 - INFO - No new unique shipped orders to append
+2025-08-12 10:05:31,431 - INFO - Total unique shipped orders remains: 8971
+2025-08-12 10:05:31,461 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 10:05:31,461 - INFO - All API calls completed successfully
+2025-08-12 10:05:31,462 - INFO - Processing took 51.98 seconds
+2025-08-12 10:05:31,462 - INFO - Waiting 68.02 seconds until next poll...
+2025-08-12 10:06:39,487 - INFO - ==== POLLING CYCLE STARTED: 10:06:39 ====
+2025-08-12 10:06:39,487 - INFO - Starting fetch_additional_data()...
+2025-08-12 10:06:44,793 - INFO - Current unique orders in file: 12033
+2025-08-12 10:06:44,798 - INFO - No new unique orders to append
+2025-08-12 10:06:44,799 - INFO - Total unique orders remains: 12033
+2025-08-12 10:06:44,815 - INFO - fetch_additional_data() completed successfully
+2025-08-12 10:06:44,816 - INFO - Starting fetch_second_api()...
+2025-08-12 10:06:44,816 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 10:07:07,183 - INFO - Received 63200 items from API
+2025-08-12 10:07:07,190 - INFO - Filtered out 1 TEST records
+2025-08-12 10:07:08,515 - INFO - Written 63199 items to second.json
+2025-08-12 10:07:08,543 - INFO - fetch_second_api() completed successfully
+2025-08-12 10:07:08,544 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 10:07:30,637 - INFO - Current unique shipped orders in file: 8971
+2025-08-12 10:07:30,649 - INFO - No new unique shipped orders to append
+2025-08-12 10:07:30,650 - INFO - Total unique shipped orders remains: 8971
+2025-08-12 10:07:30,675 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 10:07:30,676 - INFO - All API calls completed successfully
+2025-08-12 10:07:30,676 - INFO - Processing took 51.19 seconds
+2025-08-12 10:07:30,676 - INFO - Waiting 68.81 seconds until next poll...
+2025-08-12 10:08:39,489 - INFO - ==== POLLING CYCLE STARTED: 10:08:39 ====
+2025-08-12 10:08:39,490 - INFO - Starting fetch_additional_data()...
+2025-08-12 10:08:45,323 - INFO - Current unique orders in file: 12033
+2025-08-12 10:08:45,329 - INFO - No new unique orders to append
+2025-08-12 10:08:45,329 - INFO - Total unique orders remains: 12033
+2025-08-12 10:08:45,346 - INFO - fetch_additional_data() completed successfully
+2025-08-12 10:08:45,346 - INFO - Starting fetch_second_api()...
+2025-08-12 10:08:45,346 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 10:09:07,680 - INFO - Received 63203 items from API
+2025-08-12 10:09:07,687 - INFO - Filtered out 1 TEST records
+2025-08-12 10:09:09,064 - INFO - Written 63202 items to second.json
+2025-08-12 10:09:09,092 - INFO - fetch_second_api() completed successfully
+2025-08-12 10:09:09,092 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 10:09:31,157 - INFO - Current unique shipped orders in file: 8971
+2025-08-12 10:09:31,170 - INFO - No new unique shipped orders to append
+2025-08-12 10:09:31,170 - INFO - Total unique shipped orders remains: 8971
+2025-08-12 10:09:31,196 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 10:09:31,196 - INFO - All API calls completed successfully
+2025-08-12 10:09:31,197 - INFO - Processing took 51.71 seconds
+2025-08-12 10:09:31,197 - INFO - Waiting 68.29 seconds until next poll...
+2025-08-12 10:10:39,491 - INFO - ==== POLLING CYCLE STARTED: 10:10:39 ====
+2025-08-12 10:10:39,492 - INFO - Starting fetch_additional_data()...
+2025-08-12 10:10:44,949 - INFO - Current unique orders in file: 12033
+2025-08-12 10:10:44,955 - INFO - No new unique orders to append
+2025-08-12 10:10:44,956 - INFO - Total unique orders remains: 12033
+2025-08-12 10:10:44,973 - INFO - fetch_additional_data() completed successfully
+2025-08-12 10:10:44,973 - INFO - Starting fetch_second_api()...
+2025-08-12 10:10:44,973 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 10:11:07,410 - INFO - Received 63204 items from API
+2025-08-12 10:11:07,417 - INFO - Filtered out 1 TEST records
+2025-08-12 10:11:08,773 - INFO - Written 63203 items to second.json
+2025-08-12 10:11:08,823 - INFO - fetch_second_api() completed successfully
+2025-08-12 10:11:08,824 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 10:11:30,897 - INFO - Current unique shipped orders in file: 8971
+2025-08-12 10:11:30,910 - INFO - No new unique shipped orders to append
+2025-08-12 10:11:30,910 - INFO - Total unique shipped orders remains: 8971
+2025-08-12 10:11:30,935 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 10:11:30,936 - INFO - All API calls completed successfully
+2025-08-12 10:11:30,936 - INFO - Processing took 51.44 seconds
+2025-08-12 10:11:30,937 - INFO - Waiting 68.56 seconds until next poll...
+2025-08-12 10:12:39,494 - INFO - ==== POLLING CYCLE STARTED: 10:12:39 ====
+2025-08-12 10:12:39,495 - INFO - Starting fetch_additional_data()...
+2025-08-12 10:12:44,728 - INFO - Current unique orders in file: 12033
+2025-08-12 10:12:44,734 - INFO - No new unique orders to append
+2025-08-12 10:12:44,734 - INFO - Total unique orders remains: 12033
+2025-08-12 10:12:44,751 - INFO - fetch_additional_data() completed successfully
+2025-08-12 10:12:44,751 - INFO - Starting fetch_second_api()...
+2025-08-12 10:12:44,752 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 10:13:07,170 - INFO - Received 63207 items from API
+2025-08-12 10:13:07,177 - INFO - Filtered out 1 TEST records
+2025-08-12 10:13:08,662 - INFO - Written 63206 items to second.json
+2025-08-12 10:13:08,697 - INFO - fetch_second_api() completed successfully
+2025-08-12 10:13:08,698 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 10:13:53,883 - INFO - Current unique shipped orders in file: 8971
+2025-08-12 10:13:53,895 - INFO - No new unique shipped orders to append
+2025-08-12 10:13:53,896 - INFO - Total unique shipped orders remains: 8971
+2025-08-12 10:13:53,919 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 10:13:53,920 - INFO - All API calls completed successfully
+2025-08-12 10:13:53,920 - INFO - Processing took 74.42 seconds
+2025-08-12 10:13:53,921 - INFO - Waiting 45.58 seconds until next poll...
+2025-08-12 10:14:39,497 - INFO - ==== POLLING CYCLE STARTED: 10:14:39 ====
+2025-08-12 10:14:39,498 - INFO - Starting fetch_additional_data()...
+2025-08-12 10:14:44,810 - INFO - Current unique orders in file: 12033
+2025-08-12 10:14:44,816 - INFO - No new unique orders to append
+2025-08-12 10:14:44,817 - INFO - Total unique orders remains: 12033
+2025-08-12 10:14:44,835 - INFO - fetch_additional_data() completed successfully
+2025-08-12 10:14:44,835 - INFO - Starting fetch_second_api()...
+2025-08-12 10:14:44,835 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 10:15:07,174 - INFO - Received 63214 items from API
+2025-08-12 10:15:07,181 - INFO - Filtered out 1 TEST records
+2025-08-12 10:15:08,848 - INFO - Written 63213 items to second.json
+2025-08-12 10:15:08,878 - INFO - fetch_second_api() completed successfully
+2025-08-12 10:15:08,879 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 10:15:30,874 - INFO - Current unique shipped orders in file: 8971
+2025-08-12 10:15:30,887 - INFO - No new unique shipped orders to append
+2025-08-12 10:15:30,888 - INFO - Total unique shipped orders remains: 8971
+2025-08-12 10:15:30,913 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 10:15:30,913 - INFO - All API calls completed successfully
+2025-08-12 10:15:30,914 - INFO - Processing took 51.42 seconds
+2025-08-12 10:15:30,914 - INFO - Waiting 68.58 seconds until next poll...
+2025-08-12 10:16:39,498 - INFO - ==== POLLING CYCLE STARTED: 10:16:39 ====
+2025-08-12 10:16:39,498 - INFO - Starting fetch_additional_data()...
+2025-08-12 10:16:44,821 - INFO - Current unique orders in file: 12033
+2025-08-12 10:16:44,827 - INFO - No new unique orders to append
+2025-08-12 10:16:44,827 - INFO - Total unique orders remains: 12033
+2025-08-12 10:16:44,845 - INFO - fetch_additional_data() completed successfully
+2025-08-12 10:16:44,845 - INFO - Starting fetch_second_api()...
+2025-08-12 10:16:44,846 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 10:17:07,418 - INFO - Received 63217 items from API
+2025-08-12 10:17:07,425 - INFO - Filtered out 1 TEST records
+2025-08-12 10:17:08,781 - INFO - Written 63216 items to second.json
+2025-08-12 10:17:08,809 - INFO - fetch_second_api() completed successfully
+2025-08-12 10:17:08,810 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 10:17:30,792 - INFO - Current unique shipped orders in file: 8971
+2025-08-12 10:17:30,805 - INFO - No new unique shipped orders to append
+2025-08-12 10:17:30,805 - INFO - Total unique shipped orders remains: 8971
+2025-08-12 10:17:30,829 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 10:17:30,829 - INFO - All API calls completed successfully
+2025-08-12 10:17:30,830 - INFO - Processing took 51.33 seconds
+2025-08-12 10:17:30,830 - INFO - Waiting 68.67 seconds until next poll...
+2025-08-12 10:18:39,499 - INFO - ==== POLLING CYCLE STARTED: 10:18:39 ====
+2025-08-12 10:18:39,499 - INFO - Starting fetch_additional_data()...
+2025-08-12 10:18:44,970 - INFO - Current unique orders in file: 12033
+2025-08-12 10:18:44,977 - INFO - No new unique orders to append
+2025-08-12 10:18:44,978 - INFO - Total unique orders remains: 12033
+2025-08-12 10:18:45,001 - INFO - fetch_additional_data() completed successfully
+2025-08-12 10:18:45,001 - INFO - Starting fetch_second_api()...
+2025-08-12 10:18:45,001 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 10:19:07,838 - INFO - Received 63223 items from API
+2025-08-12 10:19:07,845 - INFO - Filtered out 1 TEST records
+2025-08-12 10:19:09,195 - INFO - Written 63222 items to second.json
+2025-08-12 10:19:09,224 - INFO - fetch_second_api() completed successfully
+2025-08-12 10:19:09,224 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 10:19:31,180 - INFO - Current unique shipped orders in file: 8971
+2025-08-12 10:19:31,193 - INFO - No new unique shipped orders to append
+2025-08-12 10:19:31,193 - INFO - Total unique shipped orders remains: 8971
+2025-08-12 10:19:31,218 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 10:19:31,218 - INFO - All API calls completed successfully
+2025-08-12 10:19:31,218 - INFO - Processing took 51.72 seconds
+2025-08-12 10:19:31,219 - INFO - Waiting 68.28 seconds until next poll...
+2025-08-12 10:20:39,501 - INFO - ==== POLLING CYCLE STARTED: 10:20:39 ====
+2025-08-12 10:20:39,502 - INFO - Starting fetch_additional_data()...
+2025-08-12 10:20:44,871 - INFO - Current unique orders in file: 12033
+2025-08-12 10:20:44,877 - INFO - No new unique orders to append
+2025-08-12 10:20:44,877 - INFO - Total unique orders remains: 12033
+2025-08-12 10:20:44,895 - INFO - fetch_additional_data() completed successfully
+2025-08-12 10:20:44,895 - INFO - Starting fetch_second_api()...
+2025-08-12 10:20:44,895 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 10:21:07,297 - INFO - Received 63225 items from API
+2025-08-12 10:21:07,303 - INFO - Filtered out 1 TEST records
+2025-08-12 10:21:08,650 - INFO - Written 63224 items to second.json
+2025-08-12 10:21:08,680 - INFO - fetch_second_api() completed successfully
+2025-08-12 10:21:08,680 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 10:21:30,853 - INFO - Current unique shipped orders in file: 8971
+2025-08-12 10:21:30,867 - INFO - No new unique shipped orders to append
+2025-08-12 10:21:30,867 - INFO - Total unique shipped orders remains: 8971
+2025-08-12 10:21:30,892 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 10:21:30,893 - INFO - All API calls completed successfully
+2025-08-12 10:21:30,893 - INFO - Processing took 51.39 seconds
+2025-08-12 10:21:30,894 - INFO - Waiting 68.61 seconds until next poll...
+2025-08-12 10:22:39,504 - INFO - ==== POLLING CYCLE STARTED: 10:22:39 ====
+2025-08-12 10:22:39,505 - INFO - Starting fetch_additional_data()...
+2025-08-12 10:22:45,409 - INFO - Current unique orders in file: 12033
+2025-08-12 10:22:47,547 - INFO - 
+Found 1 new unique orders:
+2025-08-12 10:22:47,548 - INFO - --------------------------------------------------
+2025-08-12 10:22:47,548 - INFO - Order Number: 93135-25037
+2025-08-12 10:22:47,548 - INFO - Warehouse: WEST-STK BCH 018
+2025-08-12 10:22:47,549 - INFO - Part Number: PP3059-P090
+2025-08-12 10:22:47,549 - INFO - Quantity: 540
+2025-08-12 10:22:47,549 - INFO - Ship To: Glasgow Royal Infirmary
+2025-08-12 10:22:47,549 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:22:47,549 - INFO - --------------------------------------------------
+2025-08-12 10:22:47,550 - INFO - Order Number: 93135-25037
+2025-08-12 10:22:47,550 - INFO - Warehouse: WEST-STK bch 019
+2025-08-12 10:22:47,550 - INFO - Part Number: PP3059-P090
+2025-08-12 10:22:47,550 - INFO - Quantity: 540
+2025-08-12 10:22:47,550 - INFO - Ship To: Glasgow Royal Infirmary
+2025-08-12 10:22:47,550 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:22:47,551 - INFO - --------------------------------------------------
+2025-08-12 10:22:47,560 - INFO - Total unique orders after append: 12034
+2025-08-12 10:22:47,577 - INFO - fetch_additional_data() completed successfully
+2025-08-12 10:22:47,577 - INFO - Starting fetch_second_api()...
+2025-08-12 10:22:47,577 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 10:23:09,927 - INFO - Received 63226 items from API
+2025-08-12 10:23:09,935 - INFO - Filtered out 1 TEST records
+2025-08-12 10:23:11,300 - INFO - Written 63225 items to second.json
+2025-08-12 10:23:11,332 - INFO - fetch_second_api() completed successfully
+2025-08-12 10:23:11,333 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 10:23:33,295 - INFO - Current unique shipped orders in file: 8971
+2025-08-12 10:23:33,307 - INFO - No new unique shipped orders to append
+2025-08-12 10:23:33,308 - INFO - Total unique shipped orders remains: 8971
+2025-08-12 10:23:33,333 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 10:23:33,333 - INFO - All API calls completed successfully
+2025-08-12 10:23:33,333 - INFO - Processing took 53.83 seconds
+2025-08-12 10:23:33,334 - INFO - Waiting 66.17 seconds until next poll...
+2025-08-12 10:24:39,507 - INFO - ==== POLLING CYCLE STARTED: 10:24:39 ====
+2025-08-12 10:24:39,507 - INFO - Starting fetch_additional_data()...
+2025-08-12 10:24:44,956 - INFO - Current unique orders in file: 12034
+2025-08-12 10:24:47,097 - INFO - 
+Found 3 new unique orders:
+2025-08-12 10:24:47,097 - INFO - --------------------------------------------------
+2025-08-12 10:24:47,097 - INFO - Order Number: 93891-25038
+2025-08-12 10:24:47,097 - INFO - Warehouse: WEST-STK BCG 053
+2025-08-12 10:24:47,097 - INFO - Part Number: PP2210-P090
+2025-08-12 10:24:47,097 - INFO - Quantity: 10
+2025-08-12 10:24:47,097 - INFO - Ship To: Synnovis Services LLP
+2025-08-12 10:24:47,097 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:24:47,112 - INFO - --------------------------------------------------
+2025-08-12 10:24:47,112 - INFO - Order Number: 93887-25038
+2025-08-12 10:24:47,112 - INFO - Warehouse: WEST-STK BLD 002
+2025-08-12 10:24:47,112 - INFO - Part Number: DSC050-N100-50
+2025-08-12 10:24:47,112 - INFO - Quantity: 1
+2025-08-12 10:24:47,112 - INFO - Ship To: Solus Scientific Solutions Ltd
+2025-08-12 10:24:47,112 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:24:47,112 - INFO - --------------------------------------------------
+2025-08-12 10:24:47,112 - INFO - Order Number: 93120-25038
+2025-08-12 10:24:47,112 - INFO - Warehouse: WEST-STK ccg 030
+2025-08-12 10:24:47,112 - INFO - Part Number: BM4295-M002-10
+2025-08-12 10:24:47,112 - INFO - Quantity: 300
+2025-08-12 10:24:47,112 - INFO - Ship To: Leicester Royal Infirmary
+2025-08-12 10:24:47,112 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:24:47,112 - INFO - --------------------------------------------------
+2025-08-12 10:24:47,112 - INFO - Order Number: 93891-25038
+2025-08-12 10:24:47,112 - INFO - Warehouse: WEST-STK FLR L
+2025-08-12 10:24:47,128 - INFO - Part Number: BM0210-M037-7
+2025-08-12 10:24:47,128 - INFO - Quantity: 600
+2025-08-12 10:24:47,128 - INFO - Ship To: Synnovis Services LLP
+2025-08-12 10:24:47,130 - INFO - Need By Date: 2025-08-12T00:00:00
+2025-08-12 10:24:47,130 - INFO - --------------------------------------------------
+2025-08-12 10:24:47,142 - INFO - Total unique orders after append: 12037
+2025-08-12 10:24:47,160 - INFO - fetch_additional_data() completed successfully
+2025-08-12 10:24:47,160 - INFO - Starting fetch_second_api()...
+2025-08-12 10:24:47,160 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 10:25:09,676 - INFO - Received 63228 items from API
+2025-08-12 10:25:09,676 - INFO - Filtered out 1 TEST records
+2025-08-12 10:25:11,085 - INFO - Written 63227 items to second.json
+2025-08-12 10:25:11,117 - INFO - fetch_second_api() completed successfully
+2025-08-12 10:25:11,117 - INFO - Starting fetch_shipped_orders()...
+2025-08-12 10:25:33,182 - INFO - Current unique shipped orders in file: 8971
+2025-08-12 10:25:33,198 - INFO - No new unique shipped orders to append
+2025-08-12 10:25:33,198 - INFO - Total unique shipped orders remains: 8971
+2025-08-12 10:25:33,235 - INFO - fetch_shipped_orders() completed successfully
+2025-08-12 10:25:33,235 - INFO - All API calls completed successfully
+2025-08-12 10:25:33,235 - INFO - Processing took 53.73 seconds
+2025-08-12 10:25:33,235 - INFO - Waiting 66.27 seconds until next poll...
+2025-08-12 10:26:39,512 - INFO - ==== POLLING CYCLE STARTED: 10:26:39 ====
+2025-08-12 10:26:39,512 - INFO - Starting fetch_additional_data()...
+2025-08-12 10:26:54,444 - INFO - Current unique orders in file: 12037
+2025-08-12 10:26:54,453 - INFO - No new unique orders to append
+2025-08-12 10:26:54,454 - INFO - Total unique orders remains: 12037
+2025-08-12 10:26:54,473 - INFO - fetch_additional_data() completed successfully
+2025-08-12 10:26:54,473 - INFO - Starting fetch_second_api()...
+2025-08-12 10:26:54,473 - INFO - Requesting ALL data from http://199.5.83.167:8000/picked
+2025-08-12 10:28:05,732 - INFO - Received 63230 items from API
+2025-08-12 10:28:05,739 - INFO - Filtered out 1 TEST records
+2025-08-12 10:28:07,098 - INFO - Written 63229 items to second.json
+2025-08-12 10:28:07,125 - INFO - fetch_second_api() completed successfully
+2025-08-12 10:28:07,125 - INFO - Starting fetch_shipped_orders()...
