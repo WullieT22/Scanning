@@ -145,7 +145,7 @@
         
         /* Shipped column specific styling */
         #data-container-shipped .accordion-content {
-            width: 550px !important;
+            width: 650px !important;
         }
         
         #data-container-shipped table {
@@ -162,26 +162,36 @@
         /* Shipped column widths */
         #data-container-shipped table th:nth-child(1),
         #data-container-shipped table td:nth-child(1) {
-            width: 35% !important;
-            max-width: 180px !important;
+            width: 30% !important;
+            max-width: 150px !important;
         }
-        
+
         #data-container-shipped table th:nth-child(2),
         #data-container-shipped table td:nth-child(2) {
             width: 10% !important;
             text-align: center;
         }
-        
+
         #data-container-shipped table th:nth-child(3),
-        #data-container-shipped table td:nth-child(3),
-        #data-container-shipped table th:nth-child(4),
-        #data-container-shipped table td:nth-child(4) {
-            width: 27.5% !important;
+        #data-container-shipped table td:nth-child(3) {
+            width: 20% !important;
             text-align: center;
             white-space: nowrap;
         }
         
-        /* Badge & header components */
+        #data-container-shipped table th:nth-child(4),
+        #data-container-shipped table td:nth-child(4) {
+            width: 20% !important;
+            text-align: center;
+            white-space: nowrap;
+        }
+        
+        #data-container-shipped table th:nth-child(5),
+        #data-container-shipped table td:nth-child(5) {
+            width: 20% !important;
+            text-align: center;
+            white-space: nowrap;
+        }        /* Badge & header components */
         .count-badge {
             background-color: #28a745;
             color: white;
@@ -1165,6 +1175,7 @@
                                     <th>QTY</th>
                                     <th>Date</th>
                                     <th>Ship Date</th>
+                                    <th>Shipped By</th>
                                 </tr>
                             </thead>
                             <tbody>`;
@@ -1226,6 +1237,7 @@
                         <td>${quantity}</td>
                         <td>${item.OrderDtl_RequestDate ? new Date(item.OrderDtl_RequestDate).toLocaleDateString() : ''}</td>
                         <td>${item.Calculated_ActualShipDate ? new Date(item.Calculated_ActualShipDate).toLocaleDateString() : ''}</td>
+                        <td>${item.ShipHead_ShipPerson || ''}</td>
                     </tr>
                 `;
             });
