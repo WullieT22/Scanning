@@ -299,6 +299,7 @@ def fetch_shipped_orders():
                 logging.info(f"Quantity: {item.get('ShipDtl_OurinventoryShipQty', 'N/A')}")
                 logging.info(f"Need By Date: {item.get('OrderDtl_RequestDate', 'N/A')}")
                 logging.info(f"Shipped On Date: {item.get('ShipHead_ShipDate', 'N/A')}")
+                logging.info(f"Shipped By: {item.get('ShipHead_ShipPerson', 'N/A')}")
             logging.info("-" * 50)
             # Count total unique orders after append
             total_unique = len({item.get('ShipDtl_OrderNum') for item in existing_data.get('value', []) if item.get('ShipDtl_OrderNum')})
