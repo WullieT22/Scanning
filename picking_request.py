@@ -17,6 +17,42 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # Authentication
 auth_wests = HTTPBasicAuth("WESTS", "Westfield")
 
+def is_within_75_days(date_string):
+    """Check if a date is within the last 75 days from today"""
+    if not date_string or date_string == "N/A":
+        return False
+    
+    try:
+        # Handle different date formats
+        date_formats = [
+            "%Y-%m-%d %H:%M:%S",  # Format from second.json: "2024-07-10 13:33:40"
+            "%Y-%m-%dT%H:%M:%S",  # Format from test.json: "2025-02-26T00:00:00"
+            "%Y-%m-%dT%H:%M:%SZ", # Format with Z suffix: "2025-01-30T11:24:12Z"
+            "%Y-%m-%d",           # Just date: "2024-07-10"
+        ]
+        
+        parsed_date = None
+        for date_format in date_formats:
+            try:
+                parsed_date = datetime.strptime(date_string, date_format)
+                break
+            except ValueError:
+                continue
+        
+        if parsed_date is None:
+            logging.warning(f"Could not parse date: {date_string}")
+            return False
+        
+        # Calculate the date 75 days ago
+        seventy_five_days_ago = datetime.now() - timedelta(days=75)
+        
+        # Return True if the date is within the last 75 days
+        return parsed_date >= seventy_five_days_ago
+        
+    except Exception as e:
+        logging.error(f"Error parsing date {date_string}: {str(e)}")
+        return False
+
 def is_within_60_days(date_string):
     """Check if a date is within the last 60 days from today"""
     if not date_string or date_string == "N/A":
@@ -255,6 +291,27 @@ def fetch_shipped_orders():
         response.raise_for_status()
         new_data = response.json()
 
+        # Filter data to only include records within 75 days
+        filtered_value = []
+        original_count = len(new_data.get("value", []))
+        
+        for item in new_data.get("value", []):
+            # Check multiple date fields for 75-day filter
+            ship_date = item.get("ShipHead_ShipDate")
+            request_date = item.get("OrderDtl_RequestDate")
+            actual_ship_date = item.get("Calculated_ActualShipDate")
+            
+            # Use ship date first, then request date, then actual ship date
+            date_to_check = ship_date or request_date or actual_ship_date
+            
+            if is_within_75_days(date_to_check):
+                filtered_value.append(item)
+        
+        logging.info(f"Filtered {original_count} shipped records down to {len(filtered_value)} records within 75 days")
+        
+        # Update the data structure with filtered items
+        new_data["value"] = filtered_value
+
         # Handle shipped.json with duplicate checking
         try:
             # Try to read existing data
@@ -321,10 +378,18 @@ def is_business_hours():
     # return 6 <= current_hour < 20
 
 def clean_old_data_from_json_files():
-    """Remove data older than 60 days from existing JSON files"""
-    files_to_clean = ["test.json", "second.json"]
+    """Remove data older than 60/75 days from existing JSON files"""
+    files_to_clean = [
+        {"filename": "test.json", "days": 60, "date_field": "MtlQueue_NeedByDate"},
+        {"filename": "second.json", "days": 60, "date_field": "MtlQueue_NeedByDate"},
+        {"filename": "shipped.json", "days": 75, "date_field": "ShipHead_ShipDate"}
+    ]
     
-    for filename in files_to_clean:
+    for file_config in files_to_clean:
+        filename = file_config["filename"]
+        days = file_config["days"]
+        date_field = file_config["date_field"]
+        
         try:
             if not os.path.exists(filename):
                 logging.info(f"{filename} does not exist, skipping cleanup")
@@ -335,11 +400,22 @@ def clean_old_data_from_json_files():
             
             original_count = len(data.get("value", []))
             
-            # Filter to keep only data within 60 days
+            # Filter to keep only data within the specified days
             filtered_value = []
             for item in data.get("value", []):
-                need_by_date = item.get("MtlQueue_NeedByDate")
-                if is_within_60_days(need_by_date):
+                date_to_check = item.get(date_field)
+                
+                # For shipped.json, also check alternative date fields
+                if filename == "shipped.json" and not date_to_check:
+                    date_to_check = item.get("OrderDtl_RequestDate") or item.get("Calculated_ActualShipDate")
+                
+                # Use appropriate date checking function
+                if days == 75:
+                    keep_item = is_within_75_days(date_to_check)
+                else:
+                    keep_item = is_within_60_days(date_to_check)
+                
+                if keep_item:
                     filtered_value.append(item)
             
             data["value"] = filtered_value
