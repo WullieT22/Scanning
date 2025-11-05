@@ -722,9 +722,15 @@
                 // Skip items without MtlQueue_PartNum
                 if (!item.MtlQueue_PartNum) continue;
                 
-                // Check if this item's order number matches
-                const orderPrefix = item.Calculated_Test ? item.Calculated_Test.substring(0, 5) : '';
-                if (orderPrefix !== String(orderNum).substring(0, 5)) continue;
+                // Check if this item's order number matches (handle both 5 and 6 digit orders)
+                if (!item.Calculated_Test) continue;
+                
+                // Extract the numeric part before the dash from Calculated_Test
+                const calculatedOrderNum = item.Calculated_Test.split('-')[0];
+                const shippedOrderNum = String(orderNum).split('-')[0];
+                
+                // Compare the numeric parts
+                if (calculatedOrderNum !== shippedOrderNum) continue;
                 
                 // Get LotNum value - either from direct property or by extraction
                 let lotNum = item.LotNum;
