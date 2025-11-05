@@ -1198,9 +1198,11 @@
                     // Skip TEST records
                     if (secondItem.Calculated_Test === "TEST") return false;
 
-                    // Check order number prefix (first 5 characters)
-                    const orderPrefix = secondItem.Calculated_Test ? secondItem.Calculated_Test.substring(0, 5) : '';
-                    if (String(item.ShipDtl_OrderNum).substring(0, 5) !== orderPrefix) return false;
+                    // Check order number by comparing numeric parts before the dash
+                    if (!secondItem.Calculated_Test) return false;
+                    const calculatedOrderNum = secondItem.Calculated_Test.split('-')[0];
+                    const shippedOrderNum = String(item.ShipDtl_OrderNum).split('-')[0];
+                    if (calculatedOrderNum !== shippedOrderNum) return false;
                     
                     // Get LotNum value - either from direct property or by extraction
                     let lotNum = secondItem.LotNum;
